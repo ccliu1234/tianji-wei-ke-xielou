@@ -327,6 +327,52 @@ input:focus,textarea:focus,select:focus{outline-color:#5473b6}
 #birth .folio-chapter p{font:14px/2.25 'LXGW WenKai','Noto Serif SC',serif;color:#5C5B59;margin:0;max-width:750px}
 #birth .folio-footnote{margin:26px 0 0!important;font:11px 'LXGW WenKai',serif!important;color:#9D948B!important}
 @media(max-width:700px){#birth .folio-overview{grid-template-columns:1fr;gap:12px;margin-bottom:30px}#birth .folio-toc{grid-template-columns:repeat(2,minmax(0,1fr))}#birth .folio-toc a{padding:14px 9px}#birth .folio-chapter{padding:28px 0}#birth .folio-hero{padding:25px 0}#birth .folio-elements,#birth .folio-signature{padding:18px}#birth .folio-pillars strong{font-size:19px}}
+</style><style id="v31-fate-theatre-design">
+#birth .fate-theatre{background:#F9F8F4;box-shadow:none;border:1px solid #DAD7D0;padding:clamp(22px,3.2vw,38px)}
+#birth .fate-theatre::before{display:none}
+#birth .fate-theatre .report-heading{margin-bottom:17px;border-color:#CCCAC5}
+#birth .fate-theatre h2{font-size:clamp(24px,3vw,32px)}
+#birth .fate-theatre-serial{font:italic 14px 'Cormorant Garamond',Georgia,serif;color:#6E7890}
+#birth .theatre-lead{font:14px/2.1 'LXGW WenKai','Noto Serif SC',serif;color:#626569;max-width:720px;margin:0 0 24px}
+#birth .theatre-stage{position:relative;display:flex;flex-direction:column;align-items:center;gap:22px;overflow:hidden;background:radial-gradient(ellipse at center,#F9F9F5 0%,#F0F1EF 100%);border:1px solid #D8DDD9;padding:36px 20px 27px}
+#birth .theatre-aura{position:absolute;top:30px;width:235px;height:235px;border:1px solid rgba(74,105,146,.2);border-radius:50%;pointer-events:none}
+#birth .theatre-aura:before,#birth .theatre-aura:after{content:"";position:absolute;border:1px solid rgba(74,105,146,.12);border-radius:50%;inset:21px}
+#birth .theatre-aura:after{inset:50px}
+#birth .theatre-protagonist{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:220px;justify-content:center;text-align:center}
+#birth .theatre-mini{font:11px 'Cormorant Garamond',Georgia,serif;color:#5F789C;letter-spacing:.11em}
+#birth .theatre-protagonist strong{font:400 76px/1.2 'Noto Serif SC',serif;color:#385477}
+#birth .theatre-protagonist>span:last-child{font:13px 'Noto Serif SC',serif;color:#63707E}
+#birth .theatre-cast{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;width:100%;max-width:790px}
+#birth .fortune-role{display:flex;flex-direction:column;align-items:center;gap:9px;background:#FCFBF7;border:1px solid #CDCAC2;padding:18px 8px;min-width:0;cursor:pointer;box-shadow:3px 4px 0 #DFDFD8;transition:transform .18s,border-color .18s,background .18s}
+#birth .fortune-role:hover{border-color:#7994B3;transform:translateY(-2px)}
+#birth .fortune-role[aria-pressed=true]{background:#EAEFF2;border-color:#6887A6}
+#birth .role-name{font:11px 'Noto Serif SC',serif;color:#777877;letter-spacing:.05em}
+#birth .fortune-role strong{font:400 clamp(17px,2.4vw,26px) 'Noto Serif SC',serif;color:#3D4F68}
+#birth .fortune-role small{font:10px 'LXGW WenKai',serif;color:#7A8A9B}
+#birth .theatre-reveal{padding:22px 25px;border-left:2px solid #8E9FB5;background:#F1F1EC;margin:18px 0 31px;min-height:140px}
+#birth .theatre-reveal-overline{font:12px 'Cormorant Garamond',serif;color:#6883A2;letter-spacing:.11em}
+#birth .theatre-reveal h3{font:400 22px 'Noto Serif SC',serif;margin:11px 0 7px;color:#343A41}
+#birth .theatre-reveal p{font:14px/2 'LXGW WenKai',serif;color:#5F6263;margin:0}
+#birth .theatre-bloom{animation:theatreAppear .28s ease both}
+@keyframes theatreAppear{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:none}}
+#birth .theatre-bottom{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}
+#birth .theatre-elements,#birth .theatre-season{padding:22px;background:#F5F3EE;border:1px solid #E2DED5}
+#birth .theatre-subheading{font:400 19px 'Noto Serif SC',serif;color:#42474D;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+#birth .theatre-subheading small{font:italic 12px 'Cormorant Garamond',Georgia,serif;color:#8290A2}
+#birth .theatre-note{font:12px/1.8 'LXGW WenKai',serif;color:#85817D}
+#birth .theatre-element{display:grid;grid-template-columns:20px minmax(0,1fr) 18px;gap:10px;align-items:center;margin:12px 0;font:14px 'Noto Serif SC',serif;color:#505760}
+#birth .theatre-element-track{display:grid;grid-template-columns:repeat(8,1fr);gap:5px}
+#birth .theatre-element-track i{height:7px;border:1px solid #D7D9D7;border-radius:4px}
+#birth .theatre-element-track i.filled{background:#8198B4;border-color:#8198B4}
+#birth .theatre-element b{font:12px 'DM Sans',sans-serif;font-weight:400;color:#647A96}
+#birth .theatre-caption{font:11px/1.8 'LXGW WenKai',serif;color:#96928C;margin-bottom:0}
+#birth .theatre-season{text-align:center}
+#birth .theatre-season-glyph{display:block;margin:16px auto 5px;font:400 65px 'Noto Serif SC',serif;color:#778DAC}
+#birth .theatre-season h3{font:400 21px 'Noto Serif SC',serif;color:#454F5D}
+#birth .theatre-season p{font:13px/2 'LXGW WenKai',serif;color:#747572}
+@media(max-width:700px){#birth .theatre-bottom{grid-template-columns:1fr}#birth .theatre-cast{gap:7px}#birth .fortune-role{padding:13px 5px}#birth .fortune-role strong{font-size:19px}#birth .role-name{font-size:10px}#birth .theatre-stage{padding:25px 10px 20px}#birth .theatre-aura{top:21px}}
+@media(max-width:380px){#birth .theatre-cast{grid-template-columns:1fr}#birth .fortune-role{flex-direction:row;justify-content:space-around}}
+@media(prefers-reduced-motion:reduce){#birth .theatre-bloom{animation:none}}
 </style></head><body><div class="shell"><header class="nav"><div class="logo">天机微可泄露 <span style="color:var(--red)">◌</span></div><span class="nav-mini">A LITTLE MYSTERY, A LOT OF ROOM TO BREATHE</span><span class="stamp">今日营业中</span></header>
 <section class="studio-intro" aria-label="天机书阁"><div class="studio-top"><div class="studio-kicker">TIANJI · A LITTLE SECRET</div><span class="studio-weather">一室纸墨，几分天机</span></div><div class="studio-heading"><span class="studio-sidenote">开卷<br>有疑</span><div><h1>天机<br><em>微可泄露</em></h1><p>一间藏在纸页里的小小书阁。<br>世事不必尽知，愿你来此，有所得，亦有所乐。</p></div></div><div class="desk-description">触碰桌上的物件，开启一处小天地。<span>也可以使用下方的文字导航。</span></div>
 
@@ -440,7 +486,23 @@ document.getElementById('calcBirth').onclick=async()=>{
  document.getElementById('birthDetail').innerHTML=`
  <div class="report-sheet"><div class="report-heading"><div><span class="micro">PART ONE / 四柱排盘</span><h2>命理原卷</h2></div><span class="report-serial">${ehtml(date)} · ${ehtml(time)}</span></div>
  <div class="fourpillar-grid">${pillars.map(p=>`<div class="pillar-cell"><label>${p.name}</label><div class="gan">${ehtml(p.str[0])}</div><div class="zhi">${ehtml(p.str[1])}</div><small>${p.shishen}</small><div class="pillmeta"><div>藏干：${ehtml(p.hidden)}</div><div>藏干十神：${ehtml(p.hiddenGods)}</div><div>纳音：${ehtml(p.nayin)}</div><div>长生：${ehtml(p.dish)}</div></div></div>`).join('')}</div><p class="note">四柱按年、月、日、时排列。日柱天干「${dg}」称日主；其余天干相对于日主的关系称十神。地支藏干和十二长生也已列示。不同流派对于旺衰、用神及断语存在差异。</p></div>
- <div class="report-sheet"><div class="report-heading"><div><span class="micro">PART TWO / 五行与十神</span><h2>看见盘中脉络</h2></div></div><div class="study-grid"><div class="study-cell"><h4>五行 · 表层分布</h4><p>以四天干与四地支的主气元素合计：<div class="element-track">${Object.entries(tally).map(([k,v])=>`<span class="element-tag">${k} ${v}</span>`).join('')}</div></p><p style="margin-top:9px">此为可视化索引，并非五行强弱或喜用神结论；完整判断还涉及月令、藏干、通根、生克与合冲。</p></div><div class="study-cell"><h4>十神 · 关系词典</h4><p>显露天干关系：${ehtml(notable)}。比劫常比作同伴与自主，食伤比作表达与创造，财星比作资源经营，官杀比作规范与压力，印星比作学习与支持。并非字面上的必然财运或官运。</p></div><div class="study-cell"><h4>日主 · 命局之心</h4><p>你的日主为「${dg}${stemElement[dg]}」。古法以此为坐标，观察其他干支如何与之作用。它可以作为一幅性格隐喻的起笔，却不是人格测验结论。</p></div><div class="study-cell"><h4>月令 · 时节背景</h4><p>月支为「${mz}」，${monthHints[mz]||'时节转换'}。月令在传统旺衰辨析中地位重要，不能只靠五行数量判断命格高低。</p></div></div></div>
+
+ <div class="report-sheet fate-theatre" id="fateTheatre">
+  <div class="report-heading"><div><span class="micro">PART TWO / THE CAST OF FATE</span><h2>你的命盘，谁在登场？</h2></div><span class="fate-theatre-serial">一人一盘 · 各有故事</span></div>
+  <p class="theatre-lead">把八字想成一场小小的戏。你是主角，另外三柱各带着一种性情与主题而来。点开他们的名帖，看看谁与你同行，谁又偏偏爱和你较劲。</p>
+  <div class="theatre-stage">
+    <div class="theatre-aura" aria-hidden="true"></div>
+    <div class="theatre-protagonist"><span class="theatre-mini">THE PROTAGONIST / 日主</span><strong>${ehtml(dg)}</strong><span>${ehtml(stemElement[dg])} · ${ehtml(prof.title)}</span></div>
+    <div class="theatre-cast">
+    ${pillars.filter((p,i)=>i!==2).map((p)=>'<button type="button" class="fortune-role" aria-pressed="false" data-role="'+ehtml(p.name)+'"><span class="role-name">'+ehtml(p.name)+' · '+ehtml(p.str)+'</span><strong>'+ehtml(p.shishen)+'</strong><small>点开这张名帖 ＋</small></button>').join('')}
+    </div>
+  </div>
+  <div class="theatre-reveal" id="theatreReveal" aria-live="polite"><span class="theatre-reveal-overline">FIRST IMPRESSION / 先看一眼</span><h3>这出戏，你站在正中央。</h3><p>日主「${ehtml(dg)}」为主角，月支「${ehtml(mz)}」带来${ehtml(monthHints[mz]||'流转的时节')}。点击上方任意一张十神名帖，揭开那位来客的性格与来意。</p></div>
+  <div class="theatre-bottom"><div class="theatre-elements"><div class="theatre-subheading"><span>五行札记</span><small>ELEMENTS / 08 CHARACTERS</small></div><p class="theatre-note">你的八个字中，哪一种元素留下了更多笔墨？</p>
+    ${Object.entries(tally).map(([k,v])=>'<div class="theatre-element"><span>'+k+'</span><div class="theatre-element-track">'+Array.from({length:8},(_,i)=>'<i class="'+(i<v?'filled':'')+'"></i>').join('')+'</div><b>'+v+'</b></div>').join('')}
+    <p class="theatre-caption">这里数的是四柱干支主气出现的次数，不是吉凶评分。</p>
+  </div><div class="theatre-season"><span class="theatre-subheading">时令来信 <small>LETTER FROM THE SEASON</small></span><span class="theatre-season-glyph">${ehtml(mz)}</span><h3>${ehtml(monthHints[mz]||'四时流转')}</h3><p>同样的日主，生在不同季节，故事就有不同光影。月令是这场戏的背景；下一卷，再读人物的情缘、事业与财运。</p></div></div>
+ </div>
  <div class="character-card" id="characterCard"><div class="char-head"><div><span class="micro">PART THREE / CHARACTER ATLAS · 命格人物志</span><h2>${prof.title}</h2><div class="char-verse">「${prof.verse}」</div><p style="font-size:13px;color:#796e63">${dg}${stemElement[dg]}日主 · ${monthHints[mz]||mz} · 显露十神 ${ehtml(notable)}</p></div><div class="char-seal">${dg}</div></div>
  ${sectionReading('其性 · 天赋之光','材有其性，光各有向。',prof.gift)}
  ${sectionReading('其影 · 所宜自省','月有盈亏，人有进退。',prof.shadow)}
@@ -663,5 +725,31 @@ const obs=new MutationObserver(()=>{if(!rendering)enhanceSign12()});if(signOut)o
       else{document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));pane.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'','#'+id);}
     });
   });
+})();
+</script><script id="v31-ten-god-interaction">
+(function(){
+const meanings={
+比肩:['与你并肩的人','自我主张强，遇事倾向先靠自己；伙伴像镜子，能互相扶持，也容易比谁更有主意。'],
+劫财:['爱较劲的同路人','重义气，敢争敢抢，热闹里有冲劲；但涉及资源、钱和主动权时，也容易不服输。'],
+食神:['松弛的才华家','灵感、口福、作品与表达是它的拿手戏；常有把喜欢的事慢慢做出名堂的趣味。'],
+伤官:['不按剧本的创作者','有自己的观点，讨厌一成不变；能改造旧规则，也可能因为嘴快而惹出波澜。'],
+正财:['细水长流的管家','喜欢稳定、踏实经营与看得见的收获；把日子一点点过出厚度是它的本领。'],
+偏财:['机缘巧合的冒险家','善于留意机会、合作与人情往来；有时越走出去，越容易遇见意料之外的故事。'],
+正官:['讲规矩的掌印人','看重责任、名声和承诺；遇到它时，人生的主题常与位置、标准和被认可有关。'],
+七杀:['迎风破局的将军','带来竞争感、行动力和挑战；有压力也有锋芒，适合写一出硬仗里的成长戏。'],
+正印:['温柔护航的藏书人','象征学习、理解、贵人照应与知识积累；有人指路，往往更容易安心成长。'],
+偏印:['独行的冷门研究家','擅长观察偏门与隐藏的规律，想法不爱随大流；常把孤独变成自己的秘密武器。']
+};
+document.addEventListener('click',function(e){
+const btn=e.target.closest('.fortune-role');if(!btn)return;
+const section=btn.closest('#fateTheatre');if(!section)return;
+const names=[...section.querySelectorAll('.fortune-role')];names.forEach(n=>n.setAttribute('aria-pressed',n===btn?'true':'false'));
+const star=btn.querySelector('strong').textContent.trim(),role=btn.dataset.role,info=meanings[star]||['来历尚待翻阅','这位来客的十神称谓是「'+star+'」。它的性情需要结合与日主的关系来读。'];
+const area=section.querySelector('#theatreReveal');area.replaceChildren();
+const eyebrow=document.createElement('span');eyebrow.className='theatre-reveal-overline';eyebrow.textContent=role+' / '+star;
+const title=document.createElement('h3');title.textContent=info[0];
+const copy=document.createElement('p');copy.textContent=info[1]+' 这位角色落在你的「'+role+'」上，是这张盘特有的一条线索。';
+area.append(eyebrow,title,copy);area.classList.remove('theatre-bloom');void area.offsetWidth;area.classList.add('theatre-bloom');
+});
 })();
 </script></body></html>

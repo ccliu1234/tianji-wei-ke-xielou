@@ -172,8 +172,99 @@ body{background:#f5f1e9!important}.studio-intro{position:relative;max-width:1192
   .studio-nav {display:none!important}
   .workspace {margin-top:23px!important}
 }
-</style><style id="v15-visibility-fix">.chapter12 .workshop12:not(.active){display:none!important}.chapter12 .workshop12.active{display:block!important}#portraitMount12 .photo-card12{animation:fadeup .45s ease both}</style></head><body><div class="shell"><header class="nav"><div class="logo">天机微可泄露 <span style="color:var(--red)">◌</span></div><span class="nav-mini">A LITTLE MYSTERY, A LOT OF ROOM TO BREATHE</span><span class="stamp">今日营业中</span></header>
-<section class="studio-intro" aria-label="天机书阁"><div class="studio-top"><div class="studio-kicker">TIANJI · A LITTLE SECRET</div><span class="studio-weather">一室纸墨，几分天机</span></div><div class="studio-heading"><span class="studio-sidenote">开卷<br>有疑</span><div><h1>天机<br><em>微可泄露</em></h1><p>一间藏在纸页里的小小书阁。<br>世事不必尽知，愿你来此，有所得，亦有所乐。</p></div></div><div class="desk-description">触碰桌上的物件，开启一处小天地。<span>也可以使用下方的文字导航。</span></div><div class="desk-scene" id="deskScene"><div class="desk-light"></div><div class="desk-grain"></div><button class="desk-object book-object" data-target="birth" aria-label="打开生辰命盘"><span class="book-shadow"></span><span class="book-cover"><span class="book-spine"></span><span class="book-ornament">☯</span><span class="book-letter">命<br>格<br>志</span><small>PERSONA</small></span><span class="object-label">命盘古籍</span></button><button class="desk-object coins-object" data-target="yi" aria-label="进入周易问卦"><span class="coin-a">乾</span><span class="coin-b">坤</span><span class="coin-c">易</span><span class="object-label">六爻铜钱</span></button><button class="desk-object sticks-object" data-target="sign" aria-label="进入抽签"><span class="sticks-sticks">♢ ♢ ♢ ♢ ♢ ♢ ♢</span><span class="sticks-vessel">天<br>机</span><span class="object-label">求签筒</span></button><button class="desk-object thread-object" data-target="love" aria-label="进入姻缘合盘"><span class="thread-heart">♡</span><svg viewBox="0 0 150 80" aria-hidden="true"><path d="M8 38 Q58 -2 84 34 T144 40" stroke="#aa5c50" stroke-width="2.5" fill="none"/></svg><span class="object-label">月老红线</span></button><button class="desk-object incense-object" data-target="incense" aria-label="进入赛博上香"><span class="smoke smoke1">〰</span><span class="smoke smoke2">〰</span><span class="incense-lines">│││</span><span class="incense-bowl"></span><span class="object-label">香火一炷</span></button><button class="desk-object wood-object" data-target="relax" aria-label="进入解压空间"><span class="wood-center">◉</span><span class="object-label">敲木鱼</span></button><button class="secret-dot" id="secretDot" aria-label="书阁暗格" title="这里似乎有一道缝"></button><div class="desk-note">一纸之上，自有乾坤。<small>试试点击墙角的暗格。</small></div></div><div class="studio-nav" id="cards"><button class="tile active" data-target="birth"><b>命格人物志</b><span>生辰八字</span></button><button class="tile" data-target="yi"><b>问一卦</b><span>六爻周易</span></button><button class="tile" data-target="sign"><b>求一签</b><span>灵签</span></button><button class="tile" data-target="love"><b>月老牵线</b><span>双人合盘</span></button><button class="tile" data-target="incense"><b>赛博上香</b><span>香火</span></button><button class="tile" data-target="relax"><b>散天机</b><span>木鱼与泡泡</span></button></div><div class="secret-panel" id="secretPanel" hidden><span>书阁暗格 / 隐页</span><button id="closeSecret" aria-label="关闭暗格">×</button><h3>并非事事，都要有答案。</h3><p>此处藏着一页未写完的手札。明日重访，或许又有别的字句。</p><p id="secretVerse"></p></div></section>
+</style><style id="v15-visibility-fix">.chapter12 .workshop12:not(.active){display:none!important}.chapter12 .workshop12.active{display:block!important}#portraitMount12 .photo-card12{animation:fadeup .45s ease both}</style>
+<style id="atlas-v16">
+/* An art-directed paper installation, not a grid of buttons. */
+.studio-intro{max-width:unset}
+.studio-intro>.studio-heading,.studio-intro>.desk-description,.studio-intro>.desk-scene,.studio-intro>.studio-nav{display:none!important}
+.secret-atlas{position:relative;width:100%;min-height:710px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 77% 20%,#fcfaf5 0%,#efe8dc 56%,#e2d6c6 100%);border:1px solid #dbd0c2;color:#463b33;font-family:'Noto Serif SC','Songti SC',serif;--atlas-ink:#493c33;--atlas-red:#9b5147}
+.secret-atlas::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:repeating-linear-gradient(91deg,transparent 0 45px,rgba(122,91,64,.018) 46px 47px),linear-gradient(118deg,transparent 55%,rgba(90,67,51,.11) 100%)}
+.atlas-noise{position:absolute;inset:0;pointer-events:none;opacity:.15;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E")}
+.atlas-mast,.atlas-bottom{position:absolute;left:4.5%;right:4.5%;display:flex;justify-content:space-between;align-items:center;font:10px/1.5 Georgia,serif;letter-spacing:.15em;color:#8b796a;z-index:5}
+.atlas-mast{top:23px}.atlas-bottom{bottom:20px}
+.atlas-ghost{position:absolute;z-index:0;right:-6%;top:120px;white-space:nowrap;font-size:clamp(220px,31vw,440px);letter-spacing:-.12em;color:rgba(125,92,71,.042);line-height:1;user-select:none;pointer-events:none}
+.atlas-head{position:absolute;z-index:4;left:7%;top:95px;pointer-events:none}
+.atlas-kicker{font:10px Georgia,serif;letter-spacing:.23em;color:#9e705f}
+.atlas-head h1{font:normal clamp(60px,8.4vw,132px)/1.18 'Noto Serif SC','Songti SC',serif!important;letter-spacing:-.065em!important;margin:22px 0 18px;color:#40352f}
+.atlas-head h1 em{font-style:normal;padding-left:1.25em;color:#925e52;font-weight:400}.atlas-dot{font-size:.6em;color:#b78c6f}.atlas-stop{color:#a45b4a}
+.atlas-head p{font:13px/1.9 'Noto Serif SC',serif;color:#847267;letter-spacing:.14em;margin-left:9px}
+.atlas-vellum{position:absolute;z-index:2;top:76px;left:48%;width:36%;height:500px;background:linear-gradient(104deg,rgba(253,251,244,.65),rgba(249,244,234,.84) 48%,rgba(241,230,215,.91));border:1px solid rgba(196,175,153,.65);box-shadow:20px 20px 35px rgba(101,77,53,.12),inset 0 0 55px rgba(255,255,255,.42);transform:rotate(8deg);cursor:pointer;transition:transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .7s;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.atlas-vellum::before{content:'';position:absolute;inset:12px;border:1px solid rgba(153,115,91,.22);pointer-events:none}
+.atlas-vellum:hover{transform:rotate(5deg) translateY(-11px);box-shadow:30px 35px 45px rgba(101,77,53,.17)}
+.atlas-vellum.is-open{transform:rotate(-3deg) translateX(5%) translateY(-12px);background:linear-gradient(120deg,#eadac9,#f8efe4)}
+.vellum-front,.vellum-back{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .35s,transform .5s}
+.vellum-back{opacity:0;transform:translateY(30px)}.atlas-vellum.is-open .vellum-front{opacity:0;transform:translateY(-22px)}.atlas-vellum.is-open .vellum-back{opacity:1;transform:none}
+.vellum-seal{font:52px Georgia,serif;color:#aa6556}.vellum-call{font:clamp(15px,1.5vw,21px) 'Noto Serif SC',serif;letter-spacing:.13em;color:#665044;writing-mode:vertical-rl}.vellum-prompt{font:10px Georgia,serif;letter-spacing:.18em;color:#a18b7c}
+.vellum-watermark{position:absolute;right:11%;top:10%;writing-mode:vertical-rl;font-size:13px;letter-spacing:.7em;color:rgba(113,86,70,.26)}
+.vellum-thread{position:absolute;z-index:1;left:-30px;bottom:30px;width:110%;border-top:1px solid #a65e57;transform:rotate(-19deg);opacity:.7;pointer-events:none}
+.vellum-corner{position:absolute;right:0;bottom:0;width:66px;height:66px;clip-path:polygon(100% 0,0 100%,100% 100%);background:linear-gradient(135deg,#e2cfb9,#fff8ed);box-shadow:-3px -3px 14px #9e8b7d}
+.atlas-entries{position:absolute;inset:0;z-index:6;pointer-events:none}
+.atlas-slip{position:absolute;display:flex;align-items:center;gap:10px;padding:14px 16px;min-height:58px;border:1px solid rgba(159,135,113,.56);background:linear-gradient(120deg,rgba(255,252,246,.94),rgba(233,220,205,.9));box-shadow:8px 11px 20px rgba(73,54,40,.11);text-decoration:none;color:#55463d;transform:rotate(var(--rot,0deg));transition:transform .3s,box-shadow .3s,background .3s;pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.atlas-slip:hover,.atlas-slip:focus-visible{transform:rotate(0deg) translateY(-9px) scale(1.04);box-shadow:15px 18px 22px rgba(73,54,40,.17);outline:none;background:#fff9ef}
+.atlas-slip:active{transform:rotate(0deg) scale(.97)}
+.slip-num{position:absolute;top:5px;left:12px;font:8px Georgia,serif;letter-spacing:.13em;color:#a89485}.slip-symbol{font:29px/1 'Noto Serif SC',serif;color:#925c4f;margin-top:8px}.slip-name{font:13px 'Noto Serif SC',serif;letter-spacing:.1em;margin-top:8px;white-space:nowrap}.slip-arrow{font:17px Georgia,serif;margin-left:auto;margin-top:5px;color:#aa7a68}
+.slip-fate{left:5%;top:405px;width:195px;--rot:-8deg}.slip-oracle{left:31%;top:458px;width:177px;--rot:5deg}.slip-sign{left:8%;top:565px;width:166px;--rot:4deg}.slip-love{right:5%;top:260px;width:170px;--rot:8deg}.slip-wish{right:8%;top:495px;width:178px;--rot:-8deg}.slip-still{right:25%;top:589px;width:170px;--rot:3deg}
+.slip-love .slip-symbol{color:#aa5652}.slip-wish .slip-symbol{color:#927454}.slip-still .slip-symbol{color:#74786c}
+@media(max-width:850px){.secret-atlas{min-height:750px}.atlas-head{top:90px;left:6%}.atlas-head h1{font-size:clamp(52px,9vw,75px)!important}.atlas-vellum{left:45%;top:122px;width:49%;height:425px}.slip-fate{top:354px;left:3%}.slip-oracle{top:449px;left:29%}.slip-sign{top:565px;left:5%}.slip-love{top:275px;right:3%}.slip-wish{top:555px;right:3%}.slip-still{top:660px;right:30%}}
+@media(max-width:600px){
+ .studio-intro{padding:0!important}
+ .secret-atlas{min-height:795px;border-left:0;border-right:0}
+ .atlas-mast{top:18px;left:6%;right:6%;font-size:8px;letter-spacing:.09em}
+ .atlas-mast span:last-child{display:none}
+ .atlas-head{top:67px;left:7%}
+ .atlas-kicker{font-size:8px;letter-spacing:.12em}
+ .atlas-head h1{font-size:clamp(47px,12vw,67px)!important;line-height:1.3!important;margin:18px 0 8px!important;letter-spacing:-.07em!important}
+ .atlas-head h1 em{padding-left:.62em}
+ .atlas-head p{font-size:11px;margin-left:2px}
+ .atlas-ghost{font-size:200px;right:-8%;top:250px}
+ .atlas-vellum{top:222px;left:26%;width:65%;height:349px;transform:rotate(9deg);z-index:1}
+ .atlas-vellum.is-open{transform:rotate(1deg) translateX(0) translateY(-7px)}
+ .vellum-call{font-size:15px}
+ .vellum-seal{font-size:38px}
+ .vellum-prompt{font-size:8px}
+ .vellum-watermark{font-size:10px}
+ .atlas-slip{min-height:62px;padding:14px 9px 8px;gap:5px}
+ .slip-num{font-size:7px;left:9px}
+ .slip-symbol{font-size:24px}.slip-name{font-size:11px}.slip-arrow{font-size:14px}
+ .slip-fate{left:4%;top:305px;width:49%;--rot:-8deg}
+ .slip-oracle{left:6%;top:398px;width:43%;--rot:5deg}
+ .slip-sign{left:3%;top:505px;width:43%;--rot:-5deg}
+ .slip-love{right:3%;top:340px;width:43%;--rot:7deg}
+ .slip-wish{right:3%;top:585px;width:49%;--rot:-7deg}
+ .slip-still{left:5%;right:auto;top:672px;width:43%;--rot:4deg}
+ .atlas-bottom{left:5%;right:5%;font-size:8px;bottom:12px}
+ .atlas-bottom span:first-child{display:none}
+}
+@media(max-width:370px){.atlas-slip{gap:4px}.slip-name{font-size:10px}.slip-symbol{font-size:22px}.slip-arrow{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.atlas-vellum,.atlas-slip,.vellum-front,.vellum-back{transition:none!important}}
+</style></head><body><div class="shell"><header class="nav"><div class="logo">天机微可泄露 <span style="color:var(--red)">◌</span></div><span class="nav-mini">A LITTLE MYSTERY, A LOT OF ROOM TO BREATHE</span><span class="stamp">今日营业中</span></header>
+<section class="studio-intro" aria-label="天机书阁"><div class="studio-top"><div class="studio-kicker">TIANJI · A LITTLE SECRET</div><span class="studio-weather">一室纸墨，几分天机</span></div><div class="studio-heading"><span class="studio-sidenote">开卷<br>有疑</span><div><h1>天机<br><em>微可泄露</em></h1><p>一间藏在纸页里的小小书阁。<br>世事不必尽知，愿你来此，有所得，亦有所乐。</p></div></div><div class="desk-description">触碰桌上的物件，开启一处小天地。<span>也可以使用下方的文字导航。</span></div>
+<div class="secret-atlas" id="secretAtlas" aria-label="天机纸境：六个可探索入口">
+  <div class="atlas-noise" aria-hidden="true"></div>
+  <div class="atlas-mast"><span>TIAN JI / AN UNFINISHED ATLAS</span><span>一页未尽 · 六事可问</span></div>
+  <div class="atlas-ghost" aria-hidden="true">天机</div>
+  <div class="atlas-head">
+    <span class="atlas-kicker">AN EXPERIMENT IN CHANCE · VOL. 01</span>
+    <h1>天机<span class="atlas-dot">、</span><br><em>微可泄露</em><span class="atlas-stop">。</span></h1>
+    <p>不是所有答案，都在纸的正面。</p>
+  </div>
+  <button class="atlas-vellum" id="atlasVellum" type="button" aria-label="揭开纸张背面的秘密" aria-expanded="false">
+    <span class="vellum-thread" aria-hidden="true"></span>
+    <span class="vellum-watermark" aria-hidden="true">不可尽知</span>
+    <span class="vellum-front"><span class="vellum-seal">◌</span><span class="vellum-call">纸有背面，事有余音</span><span class="vellum-prompt">轻触 · 揭开这一页</span></span>
+    <span class="vellum-back"><span class="vellum-seal">◎</span><span class="vellum-call">天机只泄露一点。</span><span class="vellum-prompt">其余的，等你亲手发现。</span></span>
+    <span class="vellum-corner" aria-hidden="true"></span>
+  </button>
+  <nav class="atlas-entries" aria-label="六处天机">
+    <a class="atlas-slip slip-fate" data-paper-target="birth" href="#birth"><span class="slip-num">01 / FATE</span><span class="slip-symbol">命</span><span class="slip-name">命格人物志</span><span class="slip-arrow">↗</span></a>
+    <a class="atlas-slip slip-oracle" data-paper-target="yi" href="#yi"><span class="slip-num">02 / ORACLE</span><span class="slip-symbol">☰</span><span class="slip-name">问一卦</span><span class="slip-arrow">↗</span></a>
+    <a class="atlas-slip slip-sign" data-paper-target="sign" href="#sign"><span class="slip-num">03 / LOTS</span><span class="slip-symbol">籤</span><span class="slip-name">求一签</span><span class="slip-arrow">↗</span></a>
+    <a class="atlas-slip slip-love" data-paper-target="love" href="#love"><span class="slip-num">04 / TIES</span><span class="slip-symbol">縁</span><span class="slip-name">月老牵线</span><span class="slip-arrow">↗</span></a>
+    <a class="atlas-slip slip-wish" data-paper-target="incense" href="#incense"><span class="slip-num">05 / WISH</span><span class="slip-symbol">〰</span><span class="slip-name">赛博上香</span><span class="slip-arrow">↗</span></a>
+    <a class="atlas-slip slip-still" data-paper-target="relax" href="#relax"><span class="slip-num">06 / STILL</span><span class="slip-symbol">○</span><span class="slip-name">散天机</span><span class="slip-arrow">↗</span></a>
+  </nav>
+  <div class="atlas-bottom"><span>TOUCH / LIFT / UNFOLD</span><span>往下仍有别馆与故事 ↓</span></div>
+</div><div class="desk-scene" id="deskScene"><div class="desk-light"></div><div class="desk-grain"></div><button class="desk-object book-object" data-target="birth" aria-label="打开生辰命盘"><span class="book-shadow"></span><span class="book-cover"><span class="book-spine"></span><span class="book-ornament">☯</span><span class="book-letter">命<br>格<br>志</span><small>PERSONA</small></span><span class="object-label">命盘古籍</span></button><button class="desk-object coins-object" data-target="yi" aria-label="进入周易问卦"><span class="coin-a">乾</span><span class="coin-b">坤</span><span class="coin-c">易</span><span class="object-label">六爻铜钱</span></button><button class="desk-object sticks-object" data-target="sign" aria-label="进入抽签"><span class="sticks-sticks">♢ ♢ ♢ ♢ ♢ ♢ ♢</span><span class="sticks-vessel">天<br>机</span><span class="object-label">求签筒</span></button><button class="desk-object thread-object" data-target="love" aria-label="进入姻缘合盘"><span class="thread-heart">♡</span><svg viewBox="0 0 150 80" aria-hidden="true"><path d="M8 38 Q58 -2 84 34 T144 40" stroke="#aa5c50" stroke-width="2.5" fill="none"/></svg><span class="object-label">月老红线</span></button><button class="desk-object incense-object" data-target="incense" aria-label="进入赛博上香"><span class="smoke smoke1">〰</span><span class="smoke smoke2">〰</span><span class="incense-lines">│││</span><span class="incense-bowl"></span><span class="object-label">香火一炷</span></button><button class="desk-object wood-object" data-target="relax" aria-label="进入解压空间"><span class="wood-center">◉</span><span class="object-label">敲木鱼</span></button><button class="secret-dot" id="secretDot" aria-label="书阁暗格" title="这里似乎有一道缝"></button><div class="desk-note">一纸之上，自有乾坤。<small>试试点击墙角的暗格。</small></div></div><div class="studio-nav" id="cards"><button class="tile active" data-target="birth"><b>命格人物志</b><span>生辰八字</span></button><button class="tile" data-target="yi"><b>问一卦</b><span>六爻周易</span></button><button class="tile" data-target="sign"><b>求一签</b><span>灵签</span></button><button class="tile" data-target="love"><b>月老牵线</b><span>双人合盘</span></button><button class="tile" data-target="incense"><b>赛博上香</b><span>香火</span></button><button class="tile" data-target="relax"><b>散天机</b><span>木鱼与泡泡</span></button></div><div class="secret-panel" id="secretPanel" hidden><span>书阁暗格 / 隐页</span><button id="closeSecret" aria-label="关闭暗格">×</button><h3>并非事事，都要有答案。</h3><p>此处藏着一页未写完的手札。明日重访，或许又有别的字句。</p><p id="secretVerse"></p></div></section>
 <main class="workspace" id="workspace"><div class="work-top"><span class="work-title" id="workName">生辰命盘</span><span class="work-id" id="workId">ROOM 01 / 06</span></div>
 <section id="birth" class="panel active"><p class="intro">生辰落纸，四柱成章。这里不仅排出八字，还将日主、藏干、十神、纳音一一拆解，再以一张「命格人物志」呈现性情、情缘、事业与财帛。传统术语与现代白话并置，读得懂，也经得起核对。</p><div class="birth-layout"><div class="birth-form paper-card"><div class="micro">一 / 填写生辰</div><div class="field"><label for="birthday">公历出生日期</label><input id="birthday" type="date" value="2000-01-01" min="1900-01-01" max="2099-12-31"></div><div class="field"><label for="birthtime">出生时间（24 小时）</label><input id="birthtime" type="time" value="12:00"></div><div class="field"><label for="birthplace">出生地（用于记录，暂不自动校时）</label><input id="birthplace" placeholder="例如：江苏昆山"></div><div class="actions"><button class="action red" id="calcBirth">展开命理长卷 ↗</button></div><p class="note">排盘采用传统节气干支历计算，默认东八区民用钟表时间，不自动调整出生地时区或真太阳时。海外出生、夏令时、23 时换日及节气临界的命盘务必人工复核。个人命理诠释属传统文化视角，不是经过验证的性格诊断或未来预测。</p></div><div class="stage" id="birthStage"><span class="micro">THE FOUR PILLARS</span><div class="birth-preview">命<br>盘</div><p class="instruction">请录生辰，卷轴自开。</p></div></div><div id="birthDetail" class="birth-report"></div></section>
 <section id="yi" class="panel"><p class="intro">心有所问，六掷成卦。先写下所问之事，再执三钱，依次掷出六爻。卦成后，读本卦、动爻与之卦。</p><div class="cols"><div><div class="field"><label for="yiQuestion">你最近想弄明白什么？</label><textarea id="yiQuestion" placeholder="例如：关于这次转专业，我应该重点考虑什么？"></textarea></div><div class="stage dark"><span class="micro" style="color:#c4b1a4" id="yiProgress">第 1 / 6 次</span><div class="coinrow"><div class="coin">乾</div><div class="coin">坤</div><div class="coin">易</div></div><div class="line-list" id="yiLines"></div><div class="instruction" style="color:#d7cab9">字面记 2，背面记 3；每次三钱相加得 6、7、8 或 9。</div></div><div class="actions" style="margin-top:14px"><button id="toss" class="action">掷一次铜钱</button><button id="yiReset" class="action light">重新起卦</button></div></div><div><div id="yiOut" class="result"><span class="chip">等你起卦</span><h3>这次想问什么？</h3><p>这里会依照你投出的六条爻，给出对应的六十四卦名称、本卦、变卦与解释。它不是替你预言结果，而是提供一种看问题的思路。</p></div></div></div></section>
@@ -412,5 +503,26 @@ const obs=new MutationObserver(()=>{if(!rendering)enhanceSign12()});if(signOut)o
  const idle=['我想趴一会儿。','是不是有人在翻书？','纸张晒过太阳会变香。','今天没有任务，真好。'];
  const timer=setInterval(()=>{const scene=document.getElementById('inkHabitat');if(!scene||document.hidden)return;const bounds=scene.getBoundingClientRect();if(bounds.bottom<0||bounds.top>innerHeight)return;step++;resident.classList.add('walking');resident.style.setProperty('--ink-x',((step*37)%110-55)+'px');resident.style.setProperty('--ink-face',step%2?'-1':'1');if(step%3===0)say(idle[step%idle.length],step%6===0?'sleeping':'curious');setTimeout(()=>resident.classList.remove('walking'),1000)},8000);
  window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
+})();
+</script><script id="atlas-v16-interactions">
+(function(){
+  const stage=document.getElementById('secretAtlas');
+  if(!stage)return;
+  const cover=document.getElementById('atlasVellum');
+  cover.addEventListener('click',function(){
+    const open=cover.classList.toggle('is-open');
+    cover.setAttribute('aria-expanded',String(open));
+  });
+  stage.querySelectorAll('[data-paper-target]').forEach(function(link){
+    link.addEventListener('click',function(event){
+      const id=link.getAttribute('data-paper-target');
+      const tile=document.querySelector('.studio-nav .tile[data-target="'+id+'"]');
+      const pane=document.getElementById(id);
+      if(!pane)return;
+      event.preventDefault();
+      if(tile)tile.click();
+      else{document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));pane.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'','#'+id);}
+    });
+  });
 })();
 </script></body></html>

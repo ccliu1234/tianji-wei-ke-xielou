@@ -606,6 +606,7 @@ chart.forEach(x=>{if(elements[x.gan])elementCount[elements[x.gan]]++;if(branchEl
 const themes=[{name:'性情',sub:'命格底色'},{name:'天赋',sub:'十神与盲区'},{name:'情缘',sub:'亲密关系'},{name:'事业',sub:'出头方式'},{name:'财运',sub:'求财之路'},{name:'暗线',sub:'命盘伏笔'}];
 const leadStar=topStars.find(x=>/食|伤/.test(x.star))||topStars.find(x=>/印/.test(x.star))||topStars.find(x=>/官|杀/.test(x.star))||topStars[0];
 const headline=creators.length?'有才华，也有自己的锋芒':studyStars.length?'心中自有一座藏书阁':careers.length?'骨子里有一股不服输的劲':rivals.length?'不甘心只走别人走过的路':'看似平静，心里自有方向';
+const godMeaning=g=>/官|杀/.test(g)?'责任与行动':/印/.test(g)?'学习与灵感':/食|伤/.test(g)?'表达与创造':/^(正财|偏财)$/.test(g)?'经营与机缘':/比|劫/.test(g)?'自主与同行':'独特的命盘主题';
 const opening=`以「${stem}${chart[2].zhi}」为日柱，日主属${elements[stem]}。${profile[1]}；${profile[2]}。${leadStar?'盘中又见「'+leadStar.star+'」，让这份性情多了'+(godMeaning(leadStar.star)||'另一层')+'的意味。':''}`;
 const bars=Object.entries(elementCount).map(([e,n])=>`<div class="folio-element-row"><span class="folio-element-name">${e}</span><span class="folio-element-track"><i style="width:${n/8*100}%"></i></span><span class="folio-element-count">${n}</span></div>`).join('');
 const chapters=cards.map(([h,p],i)=>`<article class="folio-chapter" id="folio-chapter-${i+1}"><div class="folio-chapter-number">${String(i+1).padStart(2,'0')} <span> / ${themes[i].name}</span></div><h3>${esc(h.replace(/^\d\d\s*\/\s*/,''))}</h3><p>${esc(p)}</p></article>`).join('');

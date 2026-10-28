@@ -463,20 +463,33 @@ attachRitual(signScene,()=>$('drawStick').click());
 
 // Richer analytical material explicitly conditioned on observed actual pillars and the 10 gods.
 const birthOut=$('birthDetail');const birthObs=new MutationObserver(()=>{if(!birthOut.querySelector('.fourpillar-grid')||birthOut.querySelector('#deepReading'))return;const cells=[...birthOut.querySelectorAll('.pillar-cell')];if(cells.length!==4)return;const get=(el,s)=>el.querySelector(s)?.textContent?.trim()||'';const chart=cells.map(el=>({gan:get(el,'.gan'),zhi:get(el,'.zhi'),god:get(el,'small')}));const stem=chart[2].gan;const counts={};chart.forEach(x=>counts[x.god]=(counts[x.god]||0)+1);const stems=chart.map(x=>x.gan).join('');const same=chart.filter(x=>x.gan===stem).length-1;const officer=Object.keys(counts).some(x=>/官|杀/.test(x)),wealth=Object.keys(counts).some(x=>/财/.test(x)),output=Object.keys(counts).some(x=>/食|伤/.test(x)),resource=Object.keys(counts).some(x=>/印/.test(x));
-const profiles={甲:['重原则、讲担当','容易过度坚持','先写下底线与可商量的部分'],乙:['擅长观察与协调','可能过度迁就','给重要决定设截止时间'],丙:['善于主动推进','容易急于看到反馈','先完成一项可交付成果'],丁:['专注且重感受','容易反复揣测','把猜测变成可以核实的问题'],戊:['重稳定与责任','容易承担过多','把责任分成自己、他人、共同三类'],己:['善于整理资源和细节','可能因求周全而拖延','先定优先级再行动'],庚:['行动直接、界限清楚','容易过早下结论','先问清事实再表达判断'],辛:['注重品质和分寸','容易过度打磨','先完成可用版本再精修'],壬:['思路灵活、敢于探索','容易方向太多','选择一个方向持续验证两周'],癸:['善于洞察细节','容易放大不确定性','把事实和推测分开记录']};
-const p=profiles[stem]||['需要结合全盘观察','容易受到环境影响','结合实际经历检验'];
-const visible=chart.map((x,i)=>({g:x.god,i})).filter(x=>x.i!==2&&x.g);
-const godMeaning=g=>/官|杀/.test(g)?'责任、规则与压力':/印/.test(g)?'学习、吸收与支持':/食|伤/.test(g)?'表达、创作与成果':/财/.test(g)?'资源、经营与回报':/比|劫/.test(g)?'自主、同伴与竞争':'尚需进一步核对';
-const godEvidence=visible.map(x=>`${['年','月','日','时'][x.i]}干见「${x.g}」（${godMeaning(x.g)}）`).join('；')||'天干十神信息有限';
+const elements={甲:'木',乙:'木',丙:'火',丁:'火',戊:'土',己:'土',庚:'金',辛:'金',壬:'水',癸:'水'};
+const grows={木:'火',火:'土',土:'金',金:'水',水:'木'};
+const conquers={木:'土',土:'水',水:'火',火:'金',金:'木'};
+const hidden={子:['癸'],丑:['己','癸','辛'],寅:['甲','丙','戊'],卯:['乙'],辰:['戊','乙','癸'],巳:['丙','戊','庚'],午:['丁','己'],未:['己','丁','乙'],申:['庚','壬','戊'],酉:['辛'],戌:['戊','辛','丁'],亥:['壬','甲']};
+const polar=x=>'甲丙戊庚壬'.includes(x)?1:0;
+function starFor(day,other){const a=elements[day],b=elements[other],same=polar(day)===polar(other);if(a===b)return same?'比肩':'劫财';if(grows[a]===b)return same?'食神':'伤官';if(grows[b]===a)return same?'偏印':'正印';if(conquers[a]===b)return same?'偏财':'正财';return same?'七杀':'正官'}
+const profile={甲:['松柏木','认准的方向就不喜欢随便转弯','越在乎一件事越容易硬撑'],乙:['藤萝木','擅长借势生长，懂得看人和时机','心里有主意却不一定当面说破'],丙:['太阳火','气场热烈，喜欢把事情带动起来','热情来得快，失望也容易写在脸上'],丁:['灯烛火','慢热而敏锐，越熟悉越有自己的锋芒','心事藏得深，容易反复回味细节'],戊:['高山土','看着稳，骨子里却很有自己的规矩','不喜欢被催，也不爱轻易示弱'],己:['田园土','善于照顾细节，能把散乱的事慢慢收拾好','容易操心太多，甚至替别人操心'],庚:['刀剑金','做事想要一个痛快明确的答案','对含糊不清的关系和承诺耐心有限'],辛:['珠玉金','有审美、有标准，细小的差别也能察觉','别人觉得没什么，你却会记很久'],壬:['江河水','喜欢新鲜事物和更大的世界','点子多，最怕被一成不变困住'],癸:['雨露水','不爱声张，却很会留意他人的情绪','想得细，也容易把事情想复杂']}[stem]||['无名之象','性格层次丰富','不喜欢一成不变'];
+const allStars=chart.flatMap((x,i)=>i===2?[]:[{star:starFor(stem,x.gan),where:['年','月','日','时'][i]+'干',hidden:false},...(hidden[x.zhi]||[]).map(h=>({star:starFor(stem,h),where:['年','月','日','时'][i]+'支',hidden:true}))]);
+const topStars=allStars.filter(x=>!x.hidden);
+const present=(pattern)=>allStars.filter(x=>pattern.test(x.star));
+const textStars=topStars.map(x=>x.where+'「'+x.star+'」').join('、');
+const money=present(/财/),careers=present(/官|杀/),creators=present(/食|伤/),studyStars=present(/印/),rivals=present(/比|劫/);
+const firstMoney=money.find(x=>!x.hidden)||money[0];
+const moneyMode=money.some(x=>x.star==='偏财')&&money.some(x=>x.star==='正财')?'正偏财同见':money.some(x=>x.star==='偏财')?'偏财有缘':money.some(x=>x.star==='正财')?'正财有根':'财星不显';
+const financeInterpret={正财:'正财重细水长流，像凭本事稳稳赚到的钱，适合长线积累与稳定经营。',偏财:'偏财爱机会与流动，故事常发生在项目、合作、人脉和临时冒出的新路上。'};
+const relationship=careers.length?'官杀气息见于盘中，感情中容易特别在意对方有没有担当、是否说到做到。':'官杀不显于这部分组合，感情更适合从日支和实际相处继续看，而不是套一句“桃花旺”。';
+const careerAngle=creators.length?'食伤有气，适合凭表达、创意、作品或手艺闯出名堂；越能做出看得见的成果，越容易被注意到。':studyStars.length?'印星有气，适合先把学问、技能和方法练深；走专业积累路线，比急着抢风头更顺手。':careers.length?'官杀有气，适合有目标、有要求的环境，能在责任和竞争中磨出位置。':'天干没有特别突出的十神主题，职业路线更看后续藏干与整体格局，不必强行贴固定职业标签。';
+const traitCaution=rivals.length?'比劫有气，自主心强，合作时容易出现“为什么要听你的”的较劲。':creators.length?'食伤有气，话说得精彩，但有时一句太直会让人下不来台。':studyStars.length?'印星有气，思虑周全，却可能想明白太久才动手。':'遇到自己在意的人和事时，容易把日主的性情放大。';
 const cards=[
-['01 / 处世底色',`这张盘的日主为「${stem}」。按传统日干象义，常借它描述「${p[0]}」的行动倾向。对应的另一面是「${p[1]}」。例如在做选择时，你可以回想自己是否经常出现这种模式；如果符合，不妨试着${p[2]}。这是待验证的观察线索，而不是由生辰确定的性格。`],
-['02 / 优点与盲区',`这张盘可直接核对的天干十神是：${godEvidence}。其中，${output?'食伤可见，传统上偏向表达与产出；适合检验自己是否能把想法变成作品、演示或具体成果。':'食伤未在天干显露，但不能因此说表达能力差；更要看实际作品与训练。'}${resource?'印星也见，可观察学习、吸收与输出之间是否平衡。':'印星未透，不意味着学习能力不足。'}实际检验方法：列出最近三件做得好的事，看看靠的是理解、表达、执行还是协作。`],
-['03 / 情缘关系',`日支「${chart[2].zhi}」在传统八字里称为配偶宫，是观察关系的一个切入点，但不能凭它推断对象身份或婚期。${officer?'盘中官杀可见，可借“规则与责任”的象义思考双方对承诺的要求。':'官杀未透不代表没有姻缘。'}更具体地说，观察三件事：发生分歧后能否修复、双方是否兑现承诺、个人边界是否被尊重。它们比吉凶标签更能帮助判断一段关系。`],
-['04 / 事业与学习',`${officer?'官杀可见，传统象义强调规则、评价和责任；如果总被外部标准推动，可以区分自己想做的与别人期待的。':'官杀未在天干显露，不能据此判断适合或不适合管理、体制类工作。'}${output?'食伤可见，可以重点尝试作品集、案例、演讲或内容创作等可见成果。':'食伤未透时，也不应忽略通过训练获得的表达与创作能力。'}给自己定一个两周目标：交出一项可展示的成果，并用明确标准复盘。`],
-['05 / 财帛与经营',`${wealth?'天干见财星，传统上用它讨论经营和资源配置，但不能直接推出财富多少。':'天干不见财星，不代表贫穷；只凭显干也不能判断财富上限。'}如果想把这个主题用在现实决策中，先分清收入来自稳定技能还是一次性机会，再核对固定支出、储备与试错成本。这里的命理象义不能替代真实财务数据。`],
-['06 / 尚待核对',`这张盘的四柱为「${chart.map(x=>x.gan+x.zhi).join('、')}」。以上具体引用了日干、日支和可见天干十神；尚未完整分析地支藏干、旺衰、合冲刑害、喜用神及大运流年。因此不能据此断某年发财、婚期或职业成败。若需要深入，应先核对出生地点与时辰，再逐项展示推断依据。`]
+['01 / 你的命格底色',`你是「${stem}」日主，五行属${elements[stem]}，取象如「${profile[0]}」。这类人的戏剧性在于：${profile[1]}。在人群里未必最吵，却往往有自己的一套节奏。尤其碰到真正想要的东西时，${profile[2]}。月柱是「${chart[1].gan}${chart[1].zhi}」，像这棵树（或这团火、这块金）生长的季节背景，会给日主的表现添上另一层颜色。`],
+['02 / 藏着哪几张王牌',`以日主「${stem}」推十神，盘中可见${textStars}。${creators.length?'食伤在盘中露面，天赋剧本更像“把脑海里的东西做出来”，从表达、审美到创作都有发挥空间。':''}${studyStars.length?'印星在盘中出现，学习力、理解力和吸收经验是一张牌。':''}${rivals.length?'比劫出现，身边同伴、竞争与自主意识是绕不过去的主题。':''}${careers.length?'官杀出现，责任、规则或目标感会反复推动你向前。':''}你的短板也可能恰好藏在长处背后：${traitCaution}`],
+['03 / 情缘与相处',`日支落「${chart[2].zhi}」，这是传统命盘中的配偶宫。${relationship}日主「${stem}」的相处风格又带一点「${profile[1]}」的味道：喜欢的人若摸不清你的节奏，可能觉得你时近时远；真正合拍的关系，是对方看得懂你的坚持，也不必每件事都和你较劲。这里讲的是命盘的情缘意象，不是替谁盖“正缘”印章。`],
+['04 / 事业与出头方式',`${careerAngle}${careers.length?'官杀与事业线相遇，更像一条“先扛事、再被看见”的路：压力不小，却容易在关键任务中磨出本领。':''}${rivals.length?'比劫也在，独立做事时会有冲劲；与人合伙则要留意主导权之争。':''}比起笼统地说“适合某行业”，这张盘更有意思的提示是：你靠什么方式出头——凭作品、凭资历、凭管理，还是凭自己开一条路。`],
+['05 / 财运 · 钱从哪里来',`这张盘的财星格局可读作「${moneyMode}」。${firstMoney?'其中'+firstMoney.where+'见「'+firstMoney.star+'」。'+financeInterpret[firstMoney.star]:'目前财星没有明显落在所列干支藏干中，故事不宜硬编成“天生财库满”。反而可以先看食伤生财、行运引财等更完整的命理路径。'}${money.some(x=>x.star==='正财')&&money.some(x=>x.star==='偏财')?'一边求稳定、一边又容易被新机会吸引，是正偏财并见最有戏的地方。':''}${creators.length?'盘中也有食伤，传统有“食伤生财”的说法：凭手艺、表达或创意换来财路，是值得继续深读的线索。':''}${rivals.length?'比劫也出现，谈钱时尤其容易牵涉同伴竞争、合作分账或讲义气的开销。':''}这说的是求财的风格与命理主题，不把金额编成天文数字。`],
+['06 / 命盘的暗线',`四柱排作「${chart.map(x=>x.gan+x.zhi).join(' · ')}」。年柱像故事开场，月柱像成长环境，日柱是你自己与亲密关系，时柱则留下往后的愿望。${topStars.length?'天干最显眼的角色有：'+textStars+'。':''}真正让剧情转折的，还包括地支藏干、合冲与大运；这些需要另起一卷细算。眼前这份人物志，先把已经排出来的角色写清楚。`]
 ];
-const deep=document.createElement('section');deep.id='deepReading';deep.className='report-sheet';deep.innerHTML=`<div class="report-heading"><div><span class="micro">PART FOUR / 命局专题详读</span><h2>六篇命理札记</h2></div></div><p class="intro">以下逐项说明命盘中看到了什么、传统上如何解释，以及可以怎样结合现实经历验证；传统术数不属于科学预测。</p><div class="insight-list">${cards.map(([h,p])=>`<article class="insight"><h4>${h}</h4><p>${esc(p)}</p></article>`).join('')}</div><p class="interpret-note">本地出生时以输入的钟表时间直接排盘，未自动根据出生地点进行真太阳时校正；临近时辰交界或节气时，应格外核对。五行表层计数不能替代喜用神判断。</p>`;birthOut.append(deep);});birthObs.observe(birthOut,{childList:true});
+const deep=document.createElement('section');deep.id='deepReading';deep.className='report-sheet';deep.innerHTML=`<div class="report-heading"><div><span class="micro">PART FOUR / 命局专题详读</span><h2>六篇命理札记</h2></div></div><p class="intro">命盘不必只讲吉凶。来读读你的日主、十神、财星与情缘，究竟藏着怎样的一出人生故事。</p><div class="insight-list">${cards.map(([h,p])=>`<article class="insight"><h4>${h}</h4><p>${esc(p)}</p></article>`).join('')}</div><p class="interpret-note">趣味命理人物志，仅供娱乐；出生时辰、节气交界可能影响排盘。</p>`;birthOut.append(deep);});birthObs.observe(birthOut,{childList:true});
 })();
 </script>
 <script>

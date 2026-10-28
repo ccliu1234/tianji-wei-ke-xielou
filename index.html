@@ -237,6 +237,165 @@ body{background:#f5f1e9!important}.studio-intro{position:relative;max-width:1192
 }
 @media(max-width:370px){.atlas-slip{gap:4px}.slip-name{font-size:10px}.slip-symbol{font-size:22px}.slip-arrow{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.atlas-vellum,.atlas-slip,.vellum-front,.vellum-back{transition:none!important}}
+</style>
+<style id="v17-chromatic-art-direction">
+/* Visual system: midnight ink, ice paper, luminous violet. Interactive content preserved. */
+:root{--paper:#eff1f5;--paper2:#e3e6ef;--ink:#171b2d;--muted:#68718b;--red:#6554d7;--gold:#a0a9db;--edge:rgba(48,58,102,.15);--shadow:0 22px 58px rgba(20,26,62,.075)}
+html{background:#eff1f5}
+body{background:radial-gradient(circle at 5% 5%,#fafbff 0%,#eff1f5 43%,#e9eaf2 100%);color:#171b2d}
+body:before{opacity:.10}
+::selection{background:#b9b5ff;color:#17132f}
+.nav{height:77px;border-bottom:1px solid rgba(72,75,121,.18)}
+.logo{font-size:16px;letter-spacing:.09em;color:#24253e}
+.logo span{color:#6554d7!important}
+.nav-mini{color:#8b8da8;font-size:10px}
+.stamp{border-color:#aba5dc;color:#6255bd;transform:rotate(0);background:#f3f0ff;font-size:10px}
+.studio-intro{max-width:unset;margin:21px auto 35px!important;padding:0!important;background:#101323!important;border:1px solid #252944!important;box-shadow:0 24px 65px rgba(21,27,70,.19)!important}
+.studio-intro:before{opacity:.05}
+.studio-top{position:absolute;z-index:9;top:31px;left:4.5%;right:4.5%;pointer-events:none;color:#bcc0dc!important;font-size:9px}
+.studio-weather{color:#9399bd}
+.secret-atlas{
+ min-height:740px;
+ color:#fafaff;
+ border:none;
+ background:
+ radial-gradient(ellipse 420px 390px at 72% 48%,rgba(121,89,239,.37) 0%,rgba(96,77,207,.08) 52%,transparent 86%),
+ radial-gradient(ellipse 580px 430px at 3% 87%,rgba(61,96,175,.24),transparent 75%),
+ linear-gradient(128deg,#101322 2%,#181930 51%,#0b1021 100%);
+}
+.secret-atlas:before{
+ background:
+ repeating-radial-gradient(circle at 74% 46%,transparent 0 82px,rgba(186,187,255,.075) 83px 84px,transparent 85px 137px),
+ linear-gradient(135deg,transparent 44%,rgba(193,198,255,.05) 51%,transparent 61%);
+ opacity:1;
+}
+.atlas-noise{opacity:.07;mix-blend-mode:screen}
+.atlas-mast,.atlas-bottom{color:#9ca0c5;letter-spacing:.21em}
+.atlas-mast{top:26px}
+.atlas-ghost{right:-2%;top:156px;font-family:Georgia,serif;font-size:clamp(300px,35vw,530px);color:rgba(216,211,255,.035);letter-spacing:-.16em}
+.atlas-head{z-index:7;left:6%;top:133px}
+.atlas-kicker{font:10px 'DM Sans',sans-serif;letter-spacing:.3em;color:#c4b3ff}
+.atlas-head h1{font:500 clamp(67px,8.7vw,140px)/1.17 'Noto Serif SC','Songti SC',serif!important;letter-spacing:-.09em!important;margin:22px 0 25px!important;color:#f5f4ff;text-shadow:0 16px 45px rgba(9,10,25,.38)}
+.atlas-head h1 em{color:#b6a7ff;padding-left:.67em;text-shadow:0 0 50px rgba(155,137,255,.27)}
+.atlas-dot{color:#aaa0fb}.atlas-stop{color:#d2e8ff}
+.atlas-head p{color:#b3b6d1;letter-spacing:.21em;font-size:13px}
+.atlas-vellum{
+ top:84px;left:51%;width:38%;height:510px;z-index:2;
+ background:linear-gradient(105deg,rgba(200,206,255,.08),rgba(216,214,255,.25) 36%,rgba(234,231,255,.56) 62%,rgba(145,139,211,.3));
+ border:1px solid rgba(217,219,255,.52);
+ border-radius:2px;
+ box-shadow:0 28px 80px rgba(1,1,12,.48),inset 2px 0 15px rgba(255,255,255,.25);
+ backdrop-filter:blur(14px);
+ transform:rotate(9deg);
+}
+.atlas-vellum:before{border-color:rgba(233,229,255,.22)}
+.atlas-vellum:hover{box-shadow:0 35px 100px rgba(2,2,15,.56),0 0 65px rgba(142,130,255,.15)}
+.atlas-vellum.is-open{background:linear-gradient(130deg,rgba(213,204,255,.51),rgba(160,148,230,.35))}
+.vellum-seal{color:#f0edff;text-shadow:0 0 22px #b1a0ff}
+.vellum-call{color:#f5f1ff;font-weight:500;text-shadow:0 2px 12px rgba(26,25,57,.32)}
+.vellum-prompt{color:#ddd9ff;font:10px 'DM Sans',sans-serif;letter-spacing:.23em}
+.vellum-watermark{color:rgba(244,242,255,.3)}
+.vellum-thread{border-color:#d0b0ff;opacity:.7}
+.vellum-corner{background:linear-gradient(138deg,rgba(244,243,255,.82),rgba(182,172,255,.33))}
+.atlas-entries{z-index:8}
+.atlas-slip{
+ color:#f3f2ff;
+ border:1px solid rgba(204,198,255,.37);
+ background:linear-gradient(135deg,rgba(62,63,108,.76),rgba(34,39,70,.76));
+ backdrop-filter:blur(18px);
+ box-shadow:9px 18px 34px rgba(0,0,12,.3),inset 0 1px rgba(255,255,255,.12);
+ border-radius:2px;
+ min-height:66px;
+}
+.atlas-slip:hover,.atlas-slip:focus-visible{background:linear-gradient(130deg,rgba(127,112,226,.92),rgba(70,73,141,.96));box-shadow:12px 18px 35px rgba(7,6,33,.37),0 0 25px rgba(151,137,255,.20)}
+.slip-num{color:#bdb9e7;font-family:'DM Sans',sans-serif;letter-spacing:.21em}
+.slip-symbol{color:#c8bdff;font-size:34px}
+.slip-name{font-size:14px;color:#f3f0ff}
+.slip-arrow{color:#d0c9ff}
+.slip-love .slip-symbol{color:#f5aec6}.slip-wish .slip-symbol{color:#a7e7f4}.slip-still .slip-symbol{color:#d8e8ca}
+.slip-fate{left:5%;top:410px}.slip-oracle{left:32%;top:488px}.slip-sign{left:9%;top:595px}
+.slip-love{right:4%;top:275px}.slip-wish{right:6%;top:520px}.slip-still{right:26%;top:630px}
+.atlas-bottom{bottom:19px}
+.workspace{margin:40px 0 70px;background:#fafbfe;border:1px solid #d8dce8;box-shadow:0 25px 55px rgba(28,35,92,.07);border-radius:3px;overflow:hidden}
+.work-top{background:linear-gradient(90deg,#1a1f3d,#34335f);color:#fff;border-bottom:none;padding:24px 32px}
+.work-title{font-size:26px;letter-spacing:.075em}
+.work-id{color:#c3c7ee}
+.panel{padding:clamp(20px,3vw,40px)}
+.intro{color:#666d87;font-size:14px}
+.paper-card,.result,.report-sheet,.folio12{
+ background:linear-gradient(145deg,#fff,#f3f4fa)!important;
+ border-color:#dfe1ed!important;
+ box-shadow:0 14px 35px rgba(25,32,78,.045)!important;
+ color:#202641!important
+}
+.paper-card p,.result p,.report-sheet p{color:#5c627b}
+.stage{background:#f0f2f9;border-color:#dbe0ed}
+.action{background:#24294a;border-color:#24294a;color:white;border-radius:2px}
+.action:hover{background:#414685}
+.action.red{background:#6653d7;border-color:#6653d7;color:#fff}
+.action.red:hover{background:#5140b4}
+.action.light{color:#252b4a;border-color:#b8bfd7;background:#fff}
+.action.light:hover{background:#f0effb}
+input,select,textarea{background:#fff;color:#202541;border-color:#c8cde0;accent-color:#6653d7}
+input:focus,textarea:focus,select:focus{outline-color:#8573e5}
+.chip{color:#635abd;border-color:#c5c2ec;background:#f3f1ff}
+.eyebrow,.micro{color:#6b74aa}
+.section-head h2{color:#1a2041}
+.footer{border-color:#d4d9e5;color:#7c8298}
+.chapter12{color:#1b2141}
+.chapter12 .chapter-eyebrow{color:#7b69c2}
+.chapter12 h2{color:#1f2544;font-size:clamp(32px,4vw,52px);letter-spacing:.01em}
+.chapter12 .lead12{color:#73798e}
+.play-card12{background:linear-gradient(130deg,#fff,#f1f2fa);border-color:#d9ddef;color:#202644;box-shadow:0 12px 32px rgba(22,30,79,.07)}
+.play-card12:hover{box-shadow:0 18px 35px rgba(49,38,128,.16);border-color:#b3aceb}
+.play-card12 .glyph,.play-card12 .arrow12{color:#7665ce}
+.chapter12 .workshop12{background:linear-gradient(130deg,#fff,#f4f4fb);border-color:#d8ddec;box-shadow:0 18px 40px rgba(33,37,83,.08)}
+.workshop12 h3{color:#202645}
+.workshop12 p{color:#636c84}
+.workshop12 .btn12{background:#eff0ff;border-color:#bcb6ee;color:#4c439e}
+.workshop12 .btn12:hover{background:#e1deff}
+.hex-stage12{background:#171b39}
+.hex-stage12 .yao12 i{background:#c9bfff}
+.hex-name12{color:#eeeaff}
+.hex-info12{border-color:#d8dce8}
+.photo-card12{background:#f4f4fc;border-color:#cdd0e8;box-shadow:8px 8px 0 #e1e2f0}
+.studio-intro .secret-panel{background:#f6f4ff;color:#242847;border-color:#a8a2d8}
+.toast{background:#27244b}
+@media(max-width:850px){
+ .secret-atlas{min-height:790px}
+ .atlas-head{top:106px}
+ .atlas-head h1{font-size:clamp(60px,9vw,82px)!important}
+ .atlas-vellum{top:140px;left:47%;width:49%;height:465px}
+ .slip-fate{top:403px}.slip-oracle{top:508px}.slip-sign{top:613px}.slip-love{top:296px}.slip-wish{top:594px}.slip-still{top:682px;right:30%}
+}
+@media(max-width:600px){
+ .shell{width:calc(100% - 24px)}
+ .nav{height:67px}
+ .logo{font-size:14px}
+ .studio-intro{margin:12px 0 27px!important}
+ .studio-top{top:16px;left:6%;right:6%;font-size:8px}
+ .secret-atlas{min-height:855px}
+ .atlas-head{top:85px;left:6%;right:5%}
+ .atlas-kicker{font-size:9px;letter-spacing:.14em}
+ .atlas-head h1{font-size:clamp(47px,12vw,70px)!important;line-height:1.28!important;letter-spacing:-.09em!important;margin:17px 0 14px!important}
+ .atlas-head h1 em{padding-left:.6em}
+ .atlas-head p{font-size:11px;letter-spacing:.13em}
+ .atlas-vellum{top:233px;left:22%;width:72%;height:393px;transform:rotate(9deg)}
+ .atlas-vellum.is-open{transform:rotate(1deg) translateY(-8px)}
+ .atlas-slip{min-height:67px;padding:14px 9px 8px}
+ .slip-num{font-size:7px}.slip-symbol{font-size:26px}.slip-name{font-size:11px}
+ .slip-fate{left:4%;top:339px;width:51%;--rot:-8deg}
+ .slip-oracle{left:4%;top:450px;width:44%;--rot:5deg}
+ .slip-sign{left:3%;top:566px;width:44%;--rot:-5deg}
+ .slip-love{right:3%;top:375px;width:45%;--rot:7deg}
+ .slip-wish{right:3%;top:659px;width:50%;--rot:-7deg}
+ .slip-still{left:5%;right:auto;top:752px;width:44%;--rot:4deg}
+ .atlas-bottom{bottom:14px}
+ .workspace{margin-top:28px}
+ .work-top{padding:21px 20px}
+ .work-title{font-size:21px}
+ .chapter12{margin-top:35px}
+}
 </style></head><body><div class="shell"><header class="nav"><div class="logo">天机微可泄露 <span style="color:var(--red)">◌</span></div><span class="nav-mini">A LITTLE MYSTERY, A LOT OF ROOM TO BREATHE</span><span class="stamp">今日营业中</span></header>
 <section class="studio-intro" aria-label="天机书阁"><div class="studio-top"><div class="studio-kicker">TIANJI · A LITTLE SECRET</div><span class="studio-weather">一室纸墨，几分天机</span></div><div class="studio-heading"><span class="studio-sidenote">开卷<br>有疑</span><div><h1>天机<br><em>微可泄露</em></h1><p>一间藏在纸页里的小小书阁。<br>世事不必尽知，愿你来此，有所得，亦有所乐。</p></div></div><div class="desk-description">触碰桌上的物件，开启一处小天地。<span>也可以使用下方的文字导航。</span></div>
 <div class="secret-atlas" id="secretAtlas" aria-label="天机纸境：六个可探索入口">

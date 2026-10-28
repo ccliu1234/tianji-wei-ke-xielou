@@ -474,7 +474,7 @@ const allStars=chart.flatMap((x,i)=>i===2?[]:[{star:starFor(stem,x.gan),where:['
 const topStars=allStars.filter(x=>!x.hidden);
 const present=(pattern)=>allStars.filter(x=>pattern.test(x.star));
 const textStars=topStars.map(x=>x.where+'「'+x.star+'」').join('、');
-const money=present(/财/),careers=present(/官|杀/),creators=present(/食|伤/),studyStars=present(/印/),rivals=present(/比|劫/);
+const money=present(/^(正财|偏财)$/),careers=present(/官|杀/),creators=present(/食|伤/),studyStars=present(/印/),rivals=present(/比|劫/);
 const firstMoney=money.find(x=>!x.hidden)||money[0];
 const moneyMode=money.some(x=>x.star==='偏财')&&money.some(x=>x.star==='正财')?'正偏财同见':money.some(x=>x.star==='偏财')?'偏财有缘':money.some(x=>x.star==='正财')?'正财有根':'财星不显';
 const financeInterpret={正财:'正财重细水长流，像凭本事稳稳赚到的钱，适合长线积累与稳定经营。',偏财:'偏财爱机会与流动，故事常发生在项目、合作、人脉和临时冒出的新路上。'};
@@ -486,7 +486,7 @@ const cards=[
 ['02 / 藏着哪几张王牌',`以日主「${stem}」推十神，盘中可见${textStars}。${creators.length?'食伤在盘中露面，天赋剧本更像“把脑海里的东西做出来”，从表达、审美到创作都有发挥空间。':''}${studyStars.length?'印星在盘中出现，学习力、理解力和吸收经验是一张牌。':''}${rivals.length?'比劫出现，身边同伴、竞争与自主意识是绕不过去的主题。':''}${careers.length?'官杀出现，责任、规则或目标感会反复推动你向前。':''}你的短板也可能恰好藏在长处背后：${traitCaution}`],
 ['03 / 情缘与相处',`日支落「${chart[2].zhi}」，这是传统命盘中的配偶宫。${relationship}日主「${stem}」的相处风格又带一点「${profile[1]}」的味道：喜欢的人若摸不清你的节奏，可能觉得你时近时远；真正合拍的关系，是对方看得懂你的坚持，也不必每件事都和你较劲。这里讲的是命盘的情缘意象，不是替谁盖“正缘”印章。`],
 ['04 / 事业与出头方式',`${careerAngle}${careers.length?'官杀与事业线相遇，更像一条“先扛事、再被看见”的路：压力不小，却容易在关键任务中磨出本领。':''}${rivals.length?'比劫也在，独立做事时会有冲劲；与人合伙则要留意主导权之争。':''}比起笼统地说“适合某行业”，这张盘更有意思的提示是：你靠什么方式出头——凭作品、凭资历、凭管理，还是凭自己开一条路。`],
-['05 / 财运 · 钱从哪里来',`这张盘的财星格局可读作「${moneyMode}」。${firstMoney?'其中'+firstMoney.where+'见「'+firstMoney.star+'」。'+financeInterpret[firstMoney.star]:'目前财星没有明显落在所列干支藏干中，故事不宜硬编成“天生财库满”。反而可以先看食伤生财、行运引财等更完整的命理路径。'}${money.some(x=>x.star==='正财')&&money.some(x=>x.star==='偏财')?'一边求稳定、一边又容易被新机会吸引，是正偏财并见最有戏的地方。':''}${creators.length?'盘中也有食伤，传统有“食伤生财”的说法：凭手艺、表达或创意换来财路，是值得继续深读的线索。':''}${rivals.length?'比劫也出现，谈钱时尤其容易牵涉同伴竞争、合作分账或讲义气的开销。':''}这说的是求财的风格与命理主题，不把金额编成天文数字。`],
+['05 / 财运 · 钱从哪里来',`这张盘的财星格局可读作「${moneyMode}」。${firstMoney?'其中'+firstMoney.where+'见「'+firstMoney.star+'」。'+(financeInterpret[firstMoney.star]||'财星的细分含义需要按正财、偏财分别解读。'):'目前财星没有明显落在所列干支藏干中，故事不宜硬编成“天生财库满”。反而可以先看食伤生财、行运引财等更完整的命理路径。'}${money.some(x=>x.star==='正财')&&money.some(x=>x.star==='偏财')?'一边求稳定、一边又容易被新机会吸引，是正偏财并见最有戏的地方。':''}${creators.length?'盘中也有食伤，传统有“食伤生财”的说法：凭手艺、表达或创意换来财路，是值得继续深读的线索。':''}${rivals.length?'比劫也出现，谈钱时尤其容易牵涉同伴竞争、合作分账或讲义气的开销。':''}这说的是求财的风格与命理主题，不把金额编成天文数字。`],
 ['06 / 命盘的暗线',`四柱排作「${chart.map(x=>x.gan+x.zhi).join(' · ')}」。年柱像故事开场，月柱像成长环境，日柱是你自己与亲密关系，时柱则留下往后的愿望。${topStars.length?'天干最显眼的角色有：'+textStars+'。':''}真正让剧情转折的，还包括地支藏干、合冲与大运；这些需要另起一卷细算。眼前这份人物志，先把已经排出来的角色写清楚。`]
 ];
 const deep=document.createElement('section');deep.id='deepReading';deep.className='report-sheet';deep.innerHTML=`<div class="report-heading"><div><span class="micro">PART FOUR / 命局专题详读</span><h2>六篇命理札记</h2></div></div><p class="intro">命盘不必只讲吉凶。来读读你的日主、十神、财星与情缘，究竟藏着怎样的一出人生故事。</p><div class="insight-list">${cards.map(([h,p])=>`<article class="insight"><h4>${h}</h4><p>${esc(p)}</p></article>`).join('')}</div><p class="interpret-note">趣味命理人物志，仅供娱乐；出生时辰、节气交界可能影响排盘。</p>`;birthOut.append(deep);});birthObs.observe(birthOut,{childList:true});

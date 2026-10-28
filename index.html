@@ -373,6 +373,29 @@ input:focus,textarea:focus,select:focus{outline-color:#5473b6}
 @media(max-width:700px){#birth .theatre-bottom{grid-template-columns:1fr}#birth .theatre-cast{gap:7px}#birth .fortune-role{padding:13px 5px}#birth .fortune-role strong{font-size:19px}#birth .role-name{font-size:10px}#birth .theatre-stage{padding:25px 10px 20px}#birth .theatre-aura{top:21px}}
 @media(max-width:380px){#birth .theatre-cast{grid-template-columns:1fr}#birth .fortune-role{flex-direction:row;justify-content:space-around}}
 @media(prefers-reduced-motion:reduce){#birth .theatre-bloom{animation:none}}
+</style><style id="v33-compact-bazi-report">
+#birth .birth-report{gap:17px}
+#birth .folio-reading{padding:clamp(20px,3vw,35px);margin-top:0}
+#birth .folio-hero{padding:27px 0 18px}
+#birth .folio-hero>p{max-width:720px}
+#birth .folio-toc-title{padding:21px 0 0;margin-bottom:12px;border-top:1px solid #D6D2CB}
+#birth .folio-toc-title h3{font-size:23px;margin:7px 0 4px}
+#birth .folio-intro-note{font:12px/1.9 'LXGW WenKai',serif;color:#8A837E;margin:0 0 13px}
+#birth .folio-chapters{border-top:1px solid #D2CDC6}
+#birth details.folio-chapter{padding:0;border-bottom:1px solid #D2CDC6}
+#birth details.folio-chapter summary{display:flex;align-items:center;gap:17px;cursor:pointer;padding:20px 4px;list-style:none}
+#birth details.folio-chapter summary::-webkit-details-marker{display:none}
+#birth details.folio-chapter summary strong{flex:1;font:400 19px/1.6 'Noto Serif SC',serif;color:#343A43}
+#birth details.folio-chapter summary .folio-chapter-number{width:89px;flex:none}
+#birth .folio-open-icon{position:relative;width:14px;height:14px;flex:none;color:#687F99}
+#birth .folio-open-icon:before,#birth .folio-open-icon:after{content:'';position:absolute;background:currentColor;left:1px;right:1px;top:6px;height:1px}
+#birth .folio-open-icon:after{transform:rotate(90deg);transition:transform .2s}
+#birth details.folio-chapter[open] .folio-open-icon:after{transform:rotate(0)}
+#birth details.folio-chapter>p{font:14px/2.15 'LXGW WenKai','Noto Serif SC',serif;color:#5D5A56;margin:0 4px 24px 106px;max-width:650px}
+#birth .folio-save-action{margin-top:22px;padding-top:19px;border-top:1px solid #D9D4CC}
+#birth .folio-save-action button{background:transparent;color:#476282;border-color:#9CAFC0}
+#birth .fate-theatre .theatre-bottom{margin-bottom:0}
+@media(max-width:650px){#birth details.folio-chapter summary{gap:10px;padding:17px 1px}#birth details.folio-chapter summary .folio-chapter-number{width:56px;font-size:12px}#birth details.folio-chapter summary .folio-chapter-number span{display:none}#birth details.folio-chapter summary strong{font-size:17px}#birth details.folio-chapter>p{margin:0 2px 22px 3px;font-size:13px}}
 </style></head><body><div class="shell"><header class="nav"><div class="logo">天机微可泄露 <span style="color:var(--red)">◌</span></div><span class="nav-mini">A LITTLE MYSTERY, A LOT OF ROOM TO BREATHE</span><span class="stamp">今日营业中</span></header>
 <section class="studio-intro" aria-label="天机书阁"><div class="studio-top"><div class="studio-kicker">TIANJI · A LITTLE SECRET</div><span class="studio-weather">一室纸墨，几分天机</span></div><div class="studio-heading"><span class="studio-sidenote">开卷<br>有疑</span><div><h1>天机<br><em>微可泄露</em></h1><p>一间藏在纸页里的小小书阁。<br>世事不必尽知，愿你来此，有所得，亦有所乐。</p></div></div><div class="desk-description">触碰桌上的物件，开启一处小天地。<span>也可以使用下方的文字导航。</span></div>
 
@@ -503,15 +526,7 @@ document.getElementById('calcBirth').onclick=async()=>{
     <p class="theatre-caption">这里数的是四柱干支主气出现的次数，不是吉凶评分。</p>
   </div><div class="theatre-season"><span class="theatre-subheading">时令来信 <small>LETTER FROM THE SEASON</small></span><span class="theatre-season-glyph">${ehtml(mz)}</span><h3>${ehtml(monthHints[mz]||'四时流转')}</h3><p>同样的日主，生在不同季节，故事就有不同光影。月令是这场戏的背景；下一卷，再读人物的情缘、事业与财运。</p></div></div>
  </div>
- <div class="character-card" id="characterCard"><div class="char-head"><div><span class="micro">PART THREE / CHARACTER ATLAS · 命格人物志</span><h2>${prof.title}</h2><div class="char-verse">「${prof.verse}」</div><p style="font-size:13px;color:#796e63">${dg}${stemElement[dg]}日主 · ${monthHints[mz]||mz} · 显露十神 ${ehtml(notable)}</p></div><div class="char-seal">${dg}</div></div>
- ${sectionReading('其性 · 天赋之光','材有其性，光各有向。',prof.gift)}
- ${sectionReading('其影 · 所宜自省','月有盈亏，人有进退。',prof.shadow)}
- ${sectionReading('情缘 · 与人相亲','情之一字，贵在两心相照。',prof.love)}
- ${sectionReading('事业 · 所行之路','守所长而开新局。',prof.work+' 月令提示「'+(monthHints[mz]||mz)+'」，可以思考自己更适合怎样的节奏，而不是把它当作职业判决。')}
- ${sectionReading('财帛 · 取用有度','财非天降，积善经营。',prof.money)}
- ${sectionReading('转机 · 留给自己的话','命有其象，行有其途。','所谓命盘，不是写好的剧本。若这段画像让你有所共鸣，可以把它当作一次自我观察；不合之处，也无需强行套入。')}
- <div class="char-foot">人物卡根据日主构建基础隐喻，并加入月令与显露十神作背景提示；它不是基于全盘喜用神、格局和大运的专业个体断语。爱情、事业、财务内容仅供传统文化体验与反思，不具有预测效力。</div></div>
- <div class="actions"><button class="action light" id="downloadPortrait">保存人物卡为文字档案 ↘</button></div>`;
+ <div class="actions folio-save-action"><button class="action light" id="downloadPortrait">保存命格人物志 ↘</button></div>`;
  document.getElementById('downloadPortrait').onclick=()=>{const text=`天机微可泄露 · 命格人物志\n${date} ${time}\n四柱：${pillars.map(p=>p.name+' '+p.str).join(' / ')}\n日主：${dg}${stemElement[dg]}\n${prof.title}\n${prof.verse}\n其性：${prof.gift}\n其影：${prof.shadow}\n情缘：${prof.love}\n事业：${prof.work}\n财帛：${prof.money}\n\n此为传统文化与创意画像，不是未来预测。`;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));a.download='天机人物志.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)};
  }catch(err){document.getElementById('birthDetail').innerHTML=`<div class="result"><h3>暂未能完成排盘</h3><p>${ehtml(err.message)}</p><p>准确排盘须依赖历法计算引擎。联网重试即可；不会临时编造八字结果。</p></div>`}finally{btn.disabled=false;btn.textContent='重新展开命盘 ↗'}
 };
@@ -609,10 +624,10 @@ const headline=creators.length?'有才华，也有自己的锋芒':studyStars.le
 const godMeaning=g=>/官|杀/.test(g)?'责任与行动':/印/.test(g)?'学习与灵感':/食|伤/.test(g)?'表达与创造':/^(正财|偏财)$/.test(g)?'经营与机缘':/比|劫/.test(g)?'自主与同行':'独特的命盘主题';
 const opening=`以「${stem}${chart[2].zhi}」为日柱，日主属${elements[stem]}。${profile[1]}；${profile[2]}。${leadStar?'盘中又见「'+leadStar.star+'」，让这份性情多了'+(godMeaning(leadStar.star)||'另一层')+'的意味。':''}`;
 const bars=Object.entries(elementCount).map(([e,n])=>`<div class="folio-element-row"><span class="folio-element-name">${e}</span><span class="folio-element-track"><i style="width:${n/8*100}%"></i></span><span class="folio-element-count">${n}</span></div>`).join('');
-const chapters=cards.map(([h,p],i)=>`<article class="folio-chapter" id="folio-chapter-${i+1}"><div class="folio-chapter-number">${String(i+1).padStart(2,'0')} <span> / ${themes[i].name}</span></div><h3>${esc(h.replace(/^\d\d\s*\/\s*/,''))}</h3><p>${esc(p)}</p></article>`).join('');
+const chapters=cards.map(([h,p],i)=>`<details class="folio-chapter" id="folio-chapter-${i+1}" ${i===0?'open':''}><summary><span class="folio-chapter-number">${String(i+1).padStart(2,'0')} <span> / ${themes[i].name}</span></span><strong>${esc(h.replace(/^\\d\\d\\s*\\/\\s*/,''))}</strong><i class="folio-open-icon" aria-hidden="true"></i></summary><p>${esc(p)}</p></details>`).join('');
 const deep=document.createElement('section');deep.id='deepReading';deep.className='report-sheet folio-reading';
-deep.innerHTML=`<div class="folio-heading"><span class="folio-overline">FATE ATLAS · 命格人物志</span><span class="folio-stamp">命格长卷 / 06 CHAPTERS</span></div><div class="folio-hero"><span class="folio-hero-label">你的命格关键词 · ${esc(stem)}日主</span><h2>${esc(headline)}</h2><p>${esc(opening)}</p><div class="folio-pillars">${chart.map((x,i)=>`<span><small>${['年','月','日','时'][i]}柱</small><strong>${esc(x.gan+x.zhi)}</strong></span>`).join('')}</div></div><div class="folio-intro-line"><span>01 / 看懂自己的命盘</span><i></i><span>02 / 读懂六篇人生札记</span></div><div class="folio-overview"><div class="folio-elements"><h3>五行分布 <small>FIVE ELEMENTS</small></h3><p>这里只展示四柱天干与地支主气的数量分布，并非五行强弱评分。</p>${bars}</div><div class="folio-signature"><span class="folio-side-label">命盘线索 / TEN GODS</span><h3>${esc(moneyMode)}</h3><p>财运部分将拆解正财、偏财与食伤生财；其余性情和事业，则结合日主、十神逐章展开。</p><div class="folio-tags">${topStars.map(x=>`<span>${esc(x.star)}</span>`).join('')}</div></div></div><div class="folio-toc-title"><span>CONTENTS</span><h3>翻阅你的人生六章</h3></div><nav class="folio-toc" aria-label="命格解读章节">${themes.map((t,i)=>`<a href="#folio-chapter-${i+1}"><b>${String(i+1).padStart(2,'0')}</b><span>${t.name}<small>${t.sub}</small></span><span class="folio-toc-arrow" aria-hidden="true"></span></a>`).join('')}</nav><div class="folio-chapters">${chapters}</div><p class="folio-footnote">一纸命理，几分趣味。传统命理内容仅供娱乐。</p>`;
-birthOut.append(deep);});birthObs.observe(birthOut,{childList:true});
+deep.innerHTML=`<div class="folio-heading"><span class="folio-overline">PART THREE / FATE ATLAS · 命格人物志</span><span class="folio-stamp">06 CHAPTERS / 六章</span></div><div class="folio-hero"><span class="folio-hero-label">你的命格关键词 · ${esc(stem)}日主</span><h2>${esc(headline)}</h2><p>${esc(opening)}</p></div><div class="folio-toc-title"><span>READ AT YOUR OWN PACE</span><h3>关于你的六个章节</h3><p class="folio-intro-note">先读感兴趣的一章，点击标题就能展开或收起。</p></div><div class="folio-chapters">${chapters}</div><p class="folio-footnote">传统命理趣味解读，仅供娱乐。</p>`;
+birthOut.append(deep);const save=document.getElementById('downloadPortrait');if(save)deep.append(save.parentElement);});birthObs.observe(birthOut,{childList:true});
 })();
 </script>
 <script>

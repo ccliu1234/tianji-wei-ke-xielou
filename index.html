@@ -396,6 +396,27 @@ input:focus,textarea:focus,select:focus{outline-color:#5473b6}
 #birth .folio-save-action button{background:transparent;color:#476282;border-color:#9CAFC0}
 #birth .fate-theatre .theatre-bottom{margin-bottom:0}
 @media(max-width:650px){#birth details.folio-chapter summary{gap:10px;padding:17px 1px}#birth details.folio-chapter summary .folio-chapter-number{width:56px;font-size:12px}#birth details.folio-chapter summary .folio-chapter-number span{display:none}#birth details.folio-chapter summary strong{font-size:17px}#birth details.folio-chapter>p{margin:0 2px 22px 3px;font-size:13px}}
+</style><style id="v34-red-thread-dossier">
+#love .love-dossier{background:#F9F7F2;border:1px solid #D9D4CA;box-shadow:none;padding:clamp(18px,3.5vw,34px)}
+#love .love-dossier-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid #D5D0C6;padding-bottom:13px;font:11px 'Cormorant Garamond',Georgia,serif;color:#7B858D;letter-spacing:.12em}
+#love .love-dossier-hero{padding:26px 0;border-bottom:1px solid #DED9CF}
+#love .love-dossier-caption{display:block;font:12px/1.6 'Noto Serif SC',serif;color:#977268;letter-spacing:.1em}
+#love .love-dossier-hero h3{font:400 clamp(25px,3vw,36px)/1.55 'Noto Serif SC',serif;color:#3B4147;margin:13px 0}
+#love .love-dossier-hero p{font:14px/2 'LXGW WenKai','Noto Serif SC',serif;color:#69625D;margin:8px 0 17px}
+#love .love-dossier-evidence{font:12px/1.7 'Noto Serif SC',serif;color:#9D7D70;background:#F1EBE4;padding:12px 14px}
+#love .love-pillars{margin:20px 0 14px}
+#love .love-pillars>div{background:#F2F0EB;border:1px solid #DFD9D0}
+#love .love-pillars strong{font-size:20px;color:#414750;font-weight:400}
+#love .love-dossier-section{padding:23px 0;border-bottom:1px solid #D8D3CB}
+#love .love-dossier-kicker{font:italic 15px 'Cormorant Garamond',Georgia,serif;color:#68809D;letter-spacing:.09em}
+#love .love-dossier-section h4{font:400 clamp(19px,2.3vw,24px)/1.5 'Noto Serif SC',serif;color:#42464B;margin:9px 0}
+#love .love-dossier-section p{font:14px/2.15 'LXGW WenKai','PingFang SC',serif;color:#53565A;margin:0 0 11px}
+#love .love-dossier-section small{font:11px/1.8 'Noto Serif SC',serif;color:#958B83}
+#love .love-dossier-details{padding:17px 0;border-bottom:1px solid #D8D3CB}
+#love .love-dossier-details summary{cursor:pointer;font:13px 'Noto Serif SC',serif;color:#5F7185}
+#love .love-dossier-details p{font:12px/1.95 'LXGW WenKai',serif;color:#716C67}
+#love .love-dossier-foot{font:11px/1.8 'LXGW WenKai',serif!important;color:#918E88!important;margin:18px 0 0}
+@media(max-width:600px){#love .love-dossier-hero{padding:20px 0}#love .love-dossier-section{padding:19px 0}#love .love-dossier-section p{font-size:13px}#love .love-pillars strong{font-size:17px}}
 </style></head><body><div class="shell"><header class="nav"><div class="logo">天机微可泄露 <span style="color:var(--red)">◌</span></div><span class="nav-mini">A LITTLE MYSTERY, A LOT OF ROOM TO BREATHE</span><span class="stamp">今日营业中</span></header>
 <section class="studio-intro" aria-label="天机书阁"><div class="studio-top"><div class="studio-kicker">TIANJI · A LITTLE SECRET</div><span class="studio-weather">一室纸墨，几分天机</span></div><div class="studio-heading"><span class="studio-sidenote">开卷<br>有疑</span><div><h1>天机<br><em>微可泄露</em></h1><p>一间藏在纸页里的小小书阁。<br>世事不必尽知，愿你来此，有所得，亦有所乐。</p></div></div><div class="desk-description">触碰桌上的物件，开启一处小天地。<span>也可以使用下方的文字导航。</span></div>
 
@@ -648,7 +669,61 @@ function loadPerson(d,t){if(!d)throw Error('请填写两个人的出生日期');
 const unordered=(a,b)=>a+b;
 function branchRelation(a,b){const pair=a+b,reverse=b+a;for(const [key,val] of Object.entries(liuhe))if(key===pair||key===reverse)return {title:`日支六合 · ${a}${b}合${val}`,text:`「${a}」与「${b}」属于地支六合之一。传统合婚往往把六合理解为易于靠近、可建立联结的象征；但六合不是感情长久的保证，仍须看双方实际相处。`};if(clashes.includes(pair)||clashes.includes(reverse))return {title:`日支六冲 · ${a}${b}相冲`,text:`「${a}」与「${b}」构成地支六冲。传统上象征节奏、环境或立场容易出现拉扯，并非“必然分手”；更值得留意争执时是互相压制，还是可以协商出相处方式。`};if(a===b)return {title:`日支同气 · ${a}${b}相见`,text:`两人的日支同为「${a}」，在传统象义中有同气、经验相近的一面，也可能让相似的固执同时显现。不能单独由此判断合婚优劣。`};return {title:`日支各异 · ${a}与${b}`,text:'两人的日支没有构成这里展示的六合或六冲。这并非“无缘”或“平淡”，只是说明不能把日支单独作为合盘的决定依据。'}}
 function elementRelation(a,b){if(a===b)return {title:`同属${a} · 比和之象`,text:`双方日主都属${a}，传统称同类比和：沟通习惯或重视的价值可能更容易被彼此理解；同时也可能在相似的坚持上互不相让。`};if(produces[a]===b)return {title:`${a}生${b} · 甲方生乙方`,text:`按五行相生，${a}生${b}。传统象义可借作一方更愿意给予支持、推动对方发展，但不能据此断定谁必须付出更多。`};if(produces[b]===a)return {title:`${b}生${a} · 乙方生甲方`,text:`按五行相生，${b}生${a}。传统象义可借作一方给予滋养、另一方得到承接；实际关系仍需双向关心。`};if(controls[a]===b)return {title:`${a}克${b} · 甲方制乙方`,text:`按五行相克，${a}克${b}。传统象义提示两种行事方式可能互相制约；克并不等于伤害，关键在于约束是否变成控制。`};return {title:`${b}克${a} · 乙方制甲方`,text:`按五行相克，${b}克${a}。可借作彼此的要求与边界容易碰撞的象征；只要沟通充分，差异并不等于不相配。`}}
-$('loveReveal').addEventListener('click',async()=>{if(loveBusy)return;loveBusy=true;try{const aName=$('personA').value.trim()||'甲方',bName=$('personB').value.trim()||'乙方',aDate=$('loveBirthA').value,bDate=$('loveBirthB').value;if(!aDate||!bDate){$('loveOut').innerHTML='<div class="love-report"><h3>还差两份生辰</h3><p>请分别填写双方的公历出生日期与时间，才能进行传统八字合盘。</p></div>';return}await ensureLunar();const a=loadPerson(aDate,$('loveTimeA').value),b=loadPerson(bDate,$('loveTimeB').value),ea=element[a.gan],eb=element[b.gan],er=elementRelation(ea,eb),br=branchRelation(a.zhi,b.zhi);$('nodeA').textContent=aName.slice(0,2);$('nodeB').textContent=bName.slice(0,2);$('loveOut').innerHTML=`<div class="love-report"><span class="micro">红线两端 · 合盘初读</span><h3>${esc(aName)} 与 ${esc(bName)}</h3><p>先识各自的命盘，再看两人干支之间有何呼应。下列展示的是能核对的历法字段与传统规则，而非随机匹配分数。</p><div class="love-pillars"><div><small>${esc(aName)} · 四柱</small><strong>${esc(a.year)} ${esc(a.month)}</strong><strong>${esc(a.day)} ${esc(a.time)}</strong><small>日主 ${esc(a.gan)} · ${esc(ea)}</small></div><div><small>${esc(bName)} · 四柱</small><strong>${esc(b.year)} ${esc(b.month)}</strong><strong>${esc(b.day)} ${esc(b.time)}</strong><small>日主 ${esc(b.gan)} · ${esc(eb)}</small></div></div><h4>其人 · 两人的日主底色</h4><p><b>${esc(aName)}（${esc(a.gan)}）：</b>${esc(stemTraits[a.gan])}。<br><b>${esc(bName)}（${esc(b.gan)}）：</b>${esc(stemTraits[b.gan])}。</p><h4>${esc(er.title)}</h4><p>${esc(er.text)}</p><h4>${esc(br.title)}</h4><p>${esc(br.text)}</p><h4>情缘之问 · 两处值得细看</h4><p><b>相吸之处：</b>留意日主五行带来的相生或互补象义，试着观察彼此是否真能给对方支持，而不是依赖算出的“契合”。<br><b>相磨之处：</b>观察不同节奏、独处需求与处理矛盾的习惯；尤其要辨认是否存在不尊重边界的行为，不能用命盘为其开脱。</p><h4>为什么不是一句“合”或“不合”？</h4><p>传统合婚不仅看日干与日支，还涉及双方整盘五行、月令、夫妻星及多柱刑冲合害，不同流派的判断也并不一致。这里清楚呈现已经计算的两类关系，不将两条规则冒充完整婚配断语。</p><p class="interpret-note">公历输入，默认东八区钟表时间；未校正真太阳时。传统文化解释无法验证两个人的真实感情或婚姻结局。出生信息不上传本站服务器。</p></div>`}catch(e){$('loveOut').innerHTML=`<div class="love-report"><h3>暂时无法排盘</h3><p>${esc(e.message)}</p></div>`}finally{loveBusy=false}});
+const branchHarm=['子未','丑午','寅巳','卯辰','申亥','酉戌'];
+const branchBreak=['子酉','丑辰','寅亥','卯午','巳申','未戌'];
+const stemUnion=['甲己','乙庚','丙辛','丁壬','戊癸'];
+const stemConflict=['甲庚','乙辛','丙壬','丁癸'];
+const symmetric=(a,b,groups)=>groups.some(pair=>pair===a+b||pair===b+a);
+const zhiOf=(p,key)=>p[key][1],ganOf=(p,key)=>p[key][0];
+function relationFor(a,b){if(symmetric(a,b,Object.keys(liuhe)))return {kind:'合',label:a+b+'六合',positive:true,strong:true,phrase:'容易靠近、愿意彼此回应',risk:'合得太紧时也容易被对方牵动'};
+if(symmetric(a,b,clashes))return {kind:'冲',label:a+b+'六冲',positive:false,strong:true,phrase:'节奏、立场或生活安排容易正面撞上',risk:'关系有吸引力也可能反复拉扯'};
+if(symmetric(a,b,branchHarm))return {kind:'害',label:a+b+'相害',positive:false,strong:false,phrase:'容易有暗自介意、误会难说透的地方',risk:'不说破时，小问题会慢慢积累'};
+if(symmetric(a,b,branchBreak))return {kind:'破',label:a+b+'相破',positive:false,strong:false,phrase:'原本说好的节奏容易被打乱',risk:'计划和承诺需要更明确'};
+if(a===b)return {kind:'同',label:a+b+'同支',positive:true,strong:false,phrase:'习惯与情绪节拍可能相近',risk:'固执起来也会照镜子一样互不相让'};
+return {kind:'异',label:a+'与'+b+'无直接六合六冲',positive:null,strong:false,phrase:'日支没有特别鲜明的合冲信号',risk:'需要继续看月支与其他柱，而不是硬断缘分'};}
+function stemFor(a,b){if(symmetric(a,b,stemUnion))return {kind:'合',title:a+b+'天干合',text:'日干相合，传统看作彼此容易被吸引、愿意往对方的方向靠。'};
+if(symmetric(a,b,stemConflict))return {kind:'冲',title:a+b+'天干冲',text:'日干相冲，双方主见碰面时更容易针锋相对；吵架容易争谁说了算。'};
+return {kind:'平',title:a+'与'+b+'日干无直接合冲',text:'日干没有直接的天干合冲，主要看五行生克与日支。'};}
+function energy(a,b,nameA,nameB){if(a===b)return {title:'同气相争',text:'两个人都属'+a+'，做事思路容易互相理解，但也容易坚持己见：谁都不想先让步。'};
+if(produces[a]===b)return {title:nameA+'生'+nameB,text:nameA+'的'+a+'生'+nameB+'的'+b+'，传统上更像前者提供支持、后者得到推动的一组关系；要留意照顾是否长期单向。'};
+if(produces[b]===a)return {title:nameB+'生'+nameA,text:nameB+'的'+b+'生'+nameA+'的'+a+'，传统上更像后者得到前者的滋养和推动；被照顾的一方不能只享受不回应。'};
+if(controls[a]===b)return {title:nameA+'克'+nameB,text:nameA+'的'+a+'克'+nameB+'的'+b+'，相处里更容易出现前者定规矩、后者感到被约束的局面；这是传统生克象义，不是现实谁强谁弱的定论。'};
+return {title:nameB+'克'+nameA,text:nameB+'的'+b+'克'+nameA+'的'+a+'，相处里更容易出现后者定方向、前者被要求配合的拉扯；现实是否如此，还要看两人的实际行为。'};}
+function loveSection(kicker,title,paragraph,evidence){return '<section class="love-dossier-section"><span class="love-dossier-kicker">'+esc(kicker)+'</span><h4>'+esc(title)+'</h4><p>'+esc(paragraph)+'</p><small>'+esc(evidence)+'</small></section>';}
+$('loveReveal').addEventListener('click',async()=>{
+if(loveBusy)return;loveBusy=true;
+try{
+const aName=$('personA').value.trim()||'甲方',bName=$('personB').value.trim()||'乙方',aDate=$('loveBirthA').value,bDate=$('loveBirthB').value;
+if(!aDate||!bDate){$('loveOut').innerHTML='<div class="love-report"><h3>还缺两个人的生辰</h3><p>请把出生日期和时间都填好，才能展开双人合盘。</p></div>';return}
+await ensureLunar();
+const a=loadPerson(aDate,$('loveTimeA').value),b=loadPerson(bDate,$('loveTimeB').value);
+const ea=element[a.gan],eb=element[b.gan],day=relationFor(a.zhi,b.zhi),month=relationFor(zhiOf(a,'month'),zhiOf(b,'month')),stem=stemFor(a.gan,b.gan),flow=energy(ea,eb,aName,bName);
+const year=relationFor(zhiOf(a,'year'),zhiOf(b,'year'));
+const dayComp=relationFor(a.zhi,zhiOf(b,'month')),reverseComp=relationFor(b.zhi,zhiOf(a,'month'));
+const strongDay=day.kind==='合'||day.kind==='冲';
+const monthChallenge=month.kind==='冲'||month.kind==='害'||month.kind==='破';
+const dayChallenge=day.kind==='冲'||day.kind==='害'||day.kind==='破';
+const harmony=day.kind==='合'||stem.kind==='合';
+const mixed=harmony&&(dayChallenge||monthChallenge||stem.kind==='冲');
+const summary=day.kind==='冲'?'有吸引也有碰撞，亲密关系容易反复拉扯':day.kind==='合'?(monthChallenge?'彼此容易靠近，过日子的节奏却未必一致':'日支相合，亲密关系的牵引力比较明显'):stem.kind==='冲'?'性格上容易硬碰硬，越在乎越可能争主动权':month.kind==='冲'?'情感未必相冲，现实生活节奏却容易较劲':stem.kind==='合'?'彼此有靠近的信号，但还要看日常能否合拍':day.kind==='害'?'不一定正面吵，却容易有说不出口的别扭':day.kind==='破'?'关系中的落差常出在约定与实际执行':day.kind==='同'?'彼此像照镜子，默契和倔强一起出现':'没有明显的日支合冲，重点落在双方互动的生克关系';
+const first='日支「'+a.zhi+'」与「'+b.zhi+'」'+day.label+'：'+day.phrase+'。'+day.risk+'。'+(stem.kind==='合'?'加上'+stem.title+'，有“想靠近”的第二重信号。':stem.kind==='冲'?'同时'+stem.title+'，冲突不止在生活节奏，也可能在主见上。':'日干没有额外合冲，别把普通的相处差异硬说成命中注定。');
+const second=month.kind==='冲'?'月支「'+zhiOf(a,'month')+'」「'+zhiOf(b,'month')+'」六冲：两个人即使感情上靠近，作息、家庭习惯、规划方式也可能常常不在同一个频道。':month.kind==='合'?'月支「'+zhiOf(a,'month')+'」「'+zhiOf(b,'month')+'」六合：生活节奏和环境适应上多了一条相互呼应的线索。':month.kind==='害'||month.kind==='破'?'月支「'+zhiOf(a,'month')+'」「'+zhiOf(b,'month')+'」相'+month.kind+'：共同生活中的小事、约定和情绪积累值得注意。':'两个月支没有直接六合六冲，生活节奏不能仅凭月柱断定完全相合。';
+const conflict=day.kind==='冲'?'真正要面对的不是“有没有感情”，而是意见冲突时谁也不愿退：越亲密越需要空间，否则很容易一吵就伤人。':day.kind==='害'?'最大的隐患是闷着不说：当下觉得算了，过后又觉得委屈，旧事容易不断累积。':day.kind==='合'?'需要防的是靠得太近后的牵制：黏得住，不代表每件事都要捆在一起决定。':monthChallenge?'容易在生活安排和未来规划上卡住，不是说几句甜话就能自动解决。':stem.kind==='冲'?'重点是主导权：谁来做决定、谁先道歉，容易比事情本身更难谈。':'这组日支没有显著正面合冲，最值得看的是双方能否持续投入，而不是用一句“天生契合”下结论。';
+const takeaway=day.kind==='冲'?'传统合盘更偏向“强碰撞型”：不是淡淡的缘分，而是容易有反复摩擦的关系。':day.kind==='合'?'传统合盘更偏向“容易靠近型”：亲密感是一张牌，但生活节奏仍要一起经营。':mixed?'盘中既有合也有冲，属于“靠近与拉扯同在”的组合。':monthChallenge?'日支没有强烈相冲，但生活层面的差异比表面更值得看。':'这张盘没有出现足够强的日支合冲信号，不宜硬说“天作之合”或“注定无缘”。';
+const evidence=[day.label,stem.title,month.label].join(' / ');
+$('nodeA').textContent=aName.slice(0,2);$('nodeB').textContent=bName.slice(0,2);
+const pA='<div><small>'+esc(aName)+' · 四柱</small><strong>'+esc(a.year)+' '+esc(a.month)+'</strong><strong>'+esc(a.day)+' '+esc(a.time)+'</strong><small>日主 '+esc(a.gan)+' · '+esc(ea)+'</small></div>';
+const pB='<div><small>'+esc(bName)+' · 四柱</small><strong>'+esc(b.year)+' '+esc(b.month)+'</strong><strong>'+esc(b.day)+' '+esc(b.time)+'</strong><small>日主 '+esc(b.gan)+' · '+esc(eb)+'</small></div>';
+let out='<div class="love-report love-dossier"><div class="love-dossier-head"><span>THE RED THREAD · 两人命盘</span><span>红线合参 / 双人卷</span></div><div class="love-dossier-hero"><span class="love-dossier-caption">'+esc(aName)+' × '+esc(bName)+'</span><h3>'+esc(summary)+'</h3><p>'+esc(takeaway)+'</p><div class="love-dossier-evidence">'+esc(evidence)+'</div></div><div class="love-pillars">'+pA+pB+'</div>';
+out+=loveSection('01 / 亲密关系','你们究竟是合还是冲？',first,'依据：双方日支 '+a.zhi+'、'+b.zhi+'；双方日干 '+a.gan+'、'+b.gan);
+out+=loveSection('02 / 相处动力','谁更容易让着谁？',flow.text,'依据：日主五行 '+ea+'、'+eb+'；'+flow.title);
+out+=loveSection('03 / 现实磨合','恋爱能谈，日子能不能过？',second,'依据：双方月支 '+zhiOf(a,'month')+'、'+zhiOf(b,'month')+'；'+month.label);
+out+=loveSection('04 / 这段关系最怕什么','关系的暗礁',conflict,'参考：日支'+day.kind+'、月支'+month.kind+'、日干'+stem.kind);
+out+='<details class="love-dossier-details"><summary>展开其他干支线索</summary><p>年支：'+esc(year.label)+'。双方日支与对方月支：'+esc(dayComp.label)+'、'+esc(reverseComp.label)+'。这些属于辅助信息，不能覆盖日支与月支的主要线索。</p></details>';
+out+='<p class="love-dossier-foot">传统八字合盘的趣味解读，不是现实关系的事实鉴定；对方是否忠诚、是否值得信任，仍要看具体行为。</p></div>';
+$('loveOut').innerHTML=out;
+}catch(e){$('loveOut').innerHTML='<div class="love-report"><h3>暂时无法排盘</h3><p>'+esc(e.message)+'</p></div>'}finally{loveBusy=false}
+});
 })();
 </script><script>
 (()=>{

@@ -1261,7 +1261,7 @@ el('nodeA').textContent=aName.slice(0,2);el('nodeB').textContent=bName.slice(0,2
 let html='<div class="love-report love-unified love-tailored"><div class="love-unified-top"><span>RED THREAD / 关系手帖</span><span>'+esc(aName)+' × '+esc(bName)+'</span></div><header><span class="love-unified-eyebrow">只写关于你们的故事</span><h2>'+esc(title)+'</h2><p>'+esc(headline)+'</p></header>';
 html+='<div class="love-tailored-lead">本次主要读到的，是下面这 '+selected.length+' 个问题。换一组生辰，问题的侧重点和顺序也会变化。</div>';
 selected.forEach((t,i)=>{html+=chapter(i+1,t.question,t.body,t.signal)});
-html+='<section class="love-tailored-ending"><span>写在最后</span><h4>'+esc(selected[0].question)+'</h4><p>'+esc(selected[0].body.split('\n\n').slice(-1)[0])+'</p></section>';
+html+='<section class="love-tailored-ending"><span>写在最后</span><h4>'+esc(selected.length>1?'你们最需要面对的，不止一件事。':'这段关系还有下一页。')+'</h4><p>'+esc('眼下最突出的主题是“'+selected[0].question.replace(/[？?]$/,'')+'”，但另一条同样值得留意的线索是“'+selected[1].question.replace(/[？?]$/,'')+'”。它们发生在同一段关系里，不需要用一个简单的“合适”或“不合适”把你们全部定义。')+'</p></section>';
 html+='<details class="love-unified-method"><summary>查看这份解读参考的出生信息</summary><p>'+esc(aName)+'：'+esc(pillar(a))+'</p><p>'+esc(bName)+'：'+esc(pillar(b))+'</p></details>';
 html+='<p class="love-unified-foot">趣味关系画像，不能替代你们真实的相处和选择。</p></div>';
 el('loveOut').innerHTML=html;

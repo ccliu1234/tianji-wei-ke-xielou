@@ -417,6 +417,16 @@ input:focus,textarea:focus,select:focus{outline-color:#5473b6}
 #love .love-dossier-details p{font:12px/1.95 'LXGW WenKai',serif;color:#716C67}
 #love .love-dossier-foot{font:11px/1.8 'LXGW WenKai',serif!important;color:#918E88!important;margin:18px 0 0}
 @media(max-width:600px){#love .love-dossier-hero{padding:20px 0}#love .love-dossier-section{padding:19px 0}#love .love-dossier-section p{font-size:13px}#love .love-pillars strong{font-size:17px}}
+</style><style id="v35-love-young-voice">
+#love .love-dossier-hero h3{font-size:clamp(27px,3.3vw,40px);letter-spacing:0;line-height:1.55}
+#love .love-dossier-caption{color:#9A6E62}
+#love .love-dossier-evidence{background:#F3EEE8;border-left:2px solid #BA9481;font-family:'Noto Serif SC',serif;letter-spacing:.02em}
+#love .love-dossier-section{padding:25px 0}
+#love .love-dossier-section h4{font-size:clamp(20px,2.3vw,25px)}
+#love .love-dossier-section p{font-size:15px;line-height:2.05;color:#45494A}
+#love .love-dossier-section small{display:block;margin-top:14px;font-size:11px;opacity:.76}
+#love .love-dossier-section:last-of-type{border-bottom:0}
+@media(max-width:600px){#love .love-dossier-section p{font-size:14px}#love .love-dossier-hero h3{font-size:27px}}
 </style></head><body><div class="shell"><header class="nav"><div class="logo">天机微可泄露 <span style="color:var(--red)">◌</span></div><span class="nav-mini">A LITTLE MYSTERY, A LOT OF ROOM TO BREATHE</span><span class="stamp">今日营业中</span></header>
 <section class="studio-intro" aria-label="天机书阁"><div class="studio-top"><div class="studio-kicker">TIANJI · A LITTLE SECRET</div><span class="studio-weather">一室纸墨，几分天机</span></div><div class="studio-heading"><span class="studio-sidenote">开卷<br>有疑</span><div><h1>天机<br><em>微可泄露</em></h1><p>一间藏在纸页里的小小书阁。<br>世事不必尽知，愿你来此，有所得，亦有所乐。</p></div></div><div class="desk-description">触碰桌上的物件，开启一处小天地。<span>也可以使用下方的文字导航。</span></div>
 
@@ -705,22 +715,26 @@ const monthChallenge=month.kind==='冲'||month.kind==='害'||month.kind==='破';
 const dayChallenge=day.kind==='冲'||day.kind==='害'||day.kind==='破';
 const harmony=day.kind==='合'||stem.kind==='合';
 const mixed=harmony&&(dayChallenge||monthChallenge||stem.kind==='冲');
-const summary=day.kind==='冲'?'有吸引也有碰撞，亲密关系容易反复拉扯':day.kind==='合'?(monthChallenge?'彼此容易靠近，过日子的节奏却未必一致':'日支相合，亲密关系的牵引力比较明显'):stem.kind==='冲'?'性格上容易硬碰硬，越在乎越可能争主动权':month.kind==='冲'?'情感未必相冲，现实生活节奏却容易较劲':stem.kind==='合'?'彼此有靠近的信号，但还要看日常能否合拍':day.kind==='害'?'不一定正面吵，却容易有说不出口的别扭':day.kind==='破'?'关系中的落差常出在约定与实际执行':day.kind==='同'?'彼此像照镜子，默契和倔强一起出现':'没有明显的日支合冲，重点落在双方互动的生克关系';
-const first='日支「'+a.zhi+'」与「'+b.zhi+'」'+day.label+'：'+day.phrase+'。'+day.risk+'。'+(stem.kind==='合'?'加上'+stem.title+'，有“想靠近”的第二重信号。':stem.kind==='冲'?'同时'+stem.title+'，冲突不止在生活节奏，也可能在主见上。':'日干没有额外合冲，别把普通的相处差异硬说成命中注定。');
-const second=month.kind==='冲'?'月支「'+zhiOf(a,'month')+'」「'+zhiOf(b,'month')+'」六冲：两个人即使感情上靠近，作息、家庭习惯、规划方式也可能常常不在同一个频道。':month.kind==='合'?'月支「'+zhiOf(a,'month')+'」「'+zhiOf(b,'month')+'」六合：生活节奏和环境适应上多了一条相互呼应的线索。':month.kind==='害'||month.kind==='破'?'月支「'+zhiOf(a,'month')+'」「'+zhiOf(b,'month')+'」相'+month.kind+'：共同生活中的小事、约定和情绪积累值得注意。':'两个月支没有直接六合六冲，生活节奏不能仅凭月柱断定完全相合。';
-const conflict=day.kind==='冲'?'真正要面对的不是“有没有感情”，而是意见冲突时谁也不愿退：越亲密越需要空间，否则很容易一吵就伤人。':day.kind==='害'?'最大的隐患是闷着不说：当下觉得算了，过后又觉得委屈，旧事容易不断累积。':day.kind==='合'?'需要防的是靠得太近后的牵制：黏得住，不代表每件事都要捆在一起决定。':monthChallenge?'容易在生活安排和未来规划上卡住，不是说几句甜话就能自动解决。':stem.kind==='冲'?'重点是主导权：谁来做决定、谁先道歉，容易比事情本身更难谈。':'这组日支没有显著正面合冲，最值得看的是双方能否持续投入，而不是用一句“天生契合”下结论。';
-const takeaway=day.kind==='冲'?'传统合盘更偏向“强碰撞型”：不是淡淡的缘分，而是容易有反复摩擦的关系。':day.kind==='合'?'传统合盘更偏向“容易靠近型”：亲密感是一张牌，但生活节奏仍要一起经营。':mixed?'盘中既有合也有冲，属于“靠近与拉扯同在”的组合。':monthChallenge?'日支没有强烈相冲，但生活层面的差异比表面更值得看。':'这张盘没有出现足够强的日支合冲信号，不宜硬说“天作之合”或“注定无缘”。';
-const evidence=[day.label,stem.title,month.label].join(' / ');
+const relationType=day.kind==='冲'?'高浓度拉扯型':day.kind==='合'?(monthChallenge?'心动很快，磨合很难型':'默契升温型'):stem.kind==='冲'?'谁也不想服软型':stem.kind==='合'?'双向奔赴潜力型':month.kind==='冲'?'恋爱脑与现实派碰撞型':day.kind==='害'?'嘴上没事，心里有事型':day.kind==='破'?'计划赶不上变化型':day.kind==='同'?'灵魂同频，也会互怼型':'慢热观察型';
+const summary=day.kind==='冲'?'你俩不是没火花，是火花太容易变成火药味':day.kind==='合'?'有点东西，这段缘分确实容易互相吸引':stem.kind==='冲'?'两个人都有主见，谁先低头是个难题':stem.kind==='合'?'容易被对方吸引，也有想靠近的冲动':month.kind==='冲'?'心动归心动，生活节奏可能完全两码事':day.kind==='害'?'最怕嘴上说没事，心里已经记下一笔':day.kind==='破'?'甜是真的甜，计划也是真的容易变':day.kind==='同'?'像在谈另一个自己，懂你也能气你':'不是强合也不是强冲，属于越相处越见分晓';
+const spark=day.kind==='合'?'日支「'+a.zhi+'」「'+b.zhi+'」六合，亲密关系的吸引感是这张盘最亮眼的一笔。容易有“怎么这么快就熟了”的感觉。':stem.kind==='合'?'日干「'+a.gan+'」「'+b.gan+'」相合，比起轰轰烈烈，更像有一种莫名想靠近的默契。':day.kind==='同'?'两人日支都是「'+a.zhi+'」，相似的习惯像一面镜子：懂对方的点，也容易猜中对方下一句话。':day.kind==='冲'?'日支「'+a.zhi+'」「'+b.zhi+'」六冲，传统更偏向强烈碰撞：对彼此在意，却未必能用同一种方式表达。':'日支「'+a.zhi+'」「'+b.zhi+'」没有直接六合六冲，心动点更多要从双方日干的相生相克找。';
+const push=flow.title+'：'+flow.text+'这不等于现实里谁一定付出更多，却很适合用来读两个人的互动角色。';
+const argument=day.kind==='冲'?'你们的吵架剧本容易是：一个人越想讲清楚，另一个人越觉得被顶撞，最后吵的已经不是原本那件事。':day.kind==='害'?'最怕“没事”两个字。表面翻篇，心里却没过去，小情绪像存草稿一样越攒越多。':day.kind==='合'?'合得来不等于没脾气：太在意对方的回应，就容易把一句话、一个表情反复琢磨。':stem.kind==='冲'?'你们最容易卡在“到底听谁的”。两个都很有主意的人，争赢了观点也可能输掉气氛。':month.kind==='冲'?'一个想提前安排，一个更想临场决定。恋爱不一定难，长期生活的安排反而容易爆雷。':day.kind==='同'?'两个人像照镜子，喜欢的东西差不多，倔脾气也差不多；明明互相懂，却都在等对方先开口。':'日支没有明显冲突组合，真正的磨合点更多来自节奏与表达方式，别把冷淡或误解都归给缘分。';
+const daily=month.kind==='冲'?'月支「'+zhiOf(a,'month')+'」「'+zhiOf(b,'month')+'」六冲。对“什么时候见面、钱怎么花、未来怎么安排”这类现实题，两个人容易各有各的答案。':month.kind==='合'?'月支「'+zhiOf(a,'month')+'」「'+zhiOf(b,'month')+'」六合。生活节奏有互相配合的倾向，日常小事可能比热恋宣言更让你们加分。':month.kind==='害'?'月支相害，日常相处更怕一些说不清的小别扭：一句无心的话，在另一方眼里可能完全不是那个意思。':month.kind==='破'?'月支相破，计划和临时变化容易制造落差。重点不在于谁有错，而是两个人的预期常常没对上。':'两个月支没有直接六合六冲。比起“天生步调一致”，你们更像要靠一次次一起做事来建立默契。';
+const bottomLine=day.kind==='冲'?'这一组不是平淡型。火花和摩擦都比较明显，甜的时候很甜，顶起来也容易不留余地。':day.kind==='合'?(monthChallenge?'心动有，磨合也不能跳过：日支相合，月支却有拉扯，是“恋爱甜，生活要慢慢练”的组合。':'日支相合，属于传统合盘里比较有吸引力的组合；最亮眼的是靠近感。'):stem.kind==='冲'?'主见碰主见，最怕两个人都把先服软当输。':month.kind==='冲'?'情感和现实不总在一条线上，越往长期走越需要看生活节奏。':'没有特别强的日支合冲标签，这段关系的剧情要靠更多细节展开。';
+const takeaway='关系类型 / '+relationType+'。'+bottomLine;
+const evidence=['关系类型：'+relationType,day.label,stem.title].join(' · ');
 $('nodeA').textContent=aName.slice(0,2);$('nodeB').textContent=bName.slice(0,2);
 const pA='<div><small>'+esc(aName)+' · 四柱</small><strong>'+esc(a.year)+' '+esc(a.month)+'</strong><strong>'+esc(a.day)+' '+esc(a.time)+'</strong><small>日主 '+esc(a.gan)+' · '+esc(ea)+'</small></div>';
 const pB='<div><small>'+esc(bName)+' · 四柱</small><strong>'+esc(b.year)+' '+esc(b.month)+'</strong><strong>'+esc(b.day)+' '+esc(b.time)+'</strong><small>日主 '+esc(b.gan)+' · '+esc(eb)+'</small></div>';
 let out='<div class="love-report love-dossier"><div class="love-dossier-head"><span>THE RED THREAD · 两人命盘</span><span>红线合参 / 双人卷</span></div><div class="love-dossier-hero"><span class="love-dossier-caption">'+esc(aName)+' × '+esc(bName)+'</span><h3>'+esc(summary)+'</h3><p>'+esc(takeaway)+'</p><div class="love-dossier-evidence">'+esc(evidence)+'</div></div><div class="love-pillars">'+pA+pB+'</div>';
-out+=loveSection('01 / 亲密关系','你们究竟是合还是冲？',first,'依据：双方日支 '+a.zhi+'、'+b.zhi+'；双方日干 '+a.gan+'、'+b.gan);
-out+=loveSection('02 / 相处动力','谁更容易让着谁？',flow.text,'依据：日主五行 '+ea+'、'+eb+'；'+flow.title);
-out+=loveSection('03 / 现实磨合','恋爱能谈，日子能不能过？',second,'依据：双方月支 '+zhiOf(a,'month')+'、'+zhiOf(b,'month')+'；'+month.label);
-out+=loveSection('04 / 这段关系最怕什么','关系的暗礁',conflict,'参考：日支'+day.kind+'、月支'+month.kind+'、日干'+stem.kind);
+out+=loveSection('01 / 心动信号','你们为什么会被彼此吸引？',spark,'命盘线索：'+day.label+'；'+stem.title);
+out+=loveSection('02 / 关系站位','谁更容易上头，谁又不肯服软？',push,'日主五行：'+ea+' × '+eb+'；'+flow.title);
+out+=loveSection('03 / 吵架剧本','你俩一闹别扭，画风会变成什么样？',argument,'命盘线索：日支'+day.kind+'、日干'+stem.kind);
+out+=loveSection('04 / 长期相处','热恋之后，还能不能待在同一个频道？',daily,'月支：'+zhiOf(a,'month')+' × '+zhiOf(b,'month')+'；'+month.label);
+out+=loveSection('05 / 一句话结案','这段缘分的关键词',bottomLine,'关系类型：'+relationType);
 out+='<details class="love-dossier-details"><summary>展开其他干支线索</summary><p>年支：'+esc(year.label)+'。双方日支与对方月支：'+esc(dayComp.label)+'、'+esc(reverseComp.label)+'。这些属于辅助信息，不能覆盖日支与月支的主要线索。</p></details>';
-out+='<p class="love-dossier-foot">传统八字合盘的趣味解读，不是现实关系的事实鉴定；对方是否忠诚、是否值得信任，仍要看具体行为。</p></div>';
+out+='<p class="love-dossier-foot">命理趣味合盘 · 真实相处更有发言权</p></div>';
 $('loveOut').innerHTML=out;
 }catch(e){$('loveOut').innerHTML='<div class="love-report"><h3>暂时无法排盘</h3><p>'+esc(e.message)+'</p></div>'}finally{loveBusy=false}
 });

@@ -541,7 +541,27 @@ input:focus,textarea:focus,select:focus{outline-color:#5473b6}
 @keyframes incenseFly{0%{opacity:.8;transform:translate(0,0) scale(1.5)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.3)}}
 @media(max-width:600px){#incense .incense-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#incense .incense-topic{min-height:100px}#incense .incense-wish-input{padding:13px}#incense .incense-letter-stage{min-height:280px}}
 @media(prefers-reduced-motion:reduce){#incense .incense-ritual-embers i{animation:none}}
-</style><style id="v41-two-bottom-experiences">.chapter12 .play-grid12{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:600px){.chapter12 .play-grid12{grid-template-columns:1fr}}</style></head><body><div class="shell"><header class="nav"><div class="logo">天机微可泄露 <span style="color:var(--red)">◌</span></div><span class="nav-mini">A LITTLE MYSTERY, A LOT OF ROOM TO BREATHE</span><span class="stamp">今日营业中</span></header>
+</style><style id="v41-two-bottom-experiences">.chapter12 .play-grid12{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:600px){.chapter12 .play-grid12{grid-template-columns:1fr}}</style><style id="v44-love-mobile-overflow-fix">
+/* Keep the entire compatibility form inside its own column on iOS Safari. */
+#love,#love .cols,#love .cols>div,#love .duo-birth,#love .birth-person,#love .birth-person .field{min-width:0;max-width:100%}
+#love .cols>div,#love .birth-person{box-sizing:border-box}
+#love .duo-birth{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+#love .birth-person input,#love .birth-person select,
+#love .cols>.field input,#love .cols>div>.field input{box-sizing:border-box;display:block;width:100%;max-width:100%;min-width:0}
+#love .birth-person input[type="time"]{-webkit-appearance:none;appearance:none;min-height:52px;max-width:100%;padding:10px 12px;line-height:normal;overflow:hidden;text-align:left}
+#love .love-date-parts{grid-template-columns:minmax(0,1.06fr) minmax(0,1fr) minmax(0,1fr);width:100%;max-width:100%}
+#love .love-date-parts label{min-width:0;max-width:100%;width:100%;overflow:hidden}
+#love .love-date-parts input,#love .love-date-parts select{box-sizing:border-box;width:100%;min-width:0;max-width:100%;text-overflow:ellipsis}
+@media(max-width:760px){
+ #love .cols{grid-template-columns:minmax(0,1fr);gap:23px}
+ #love .duo-birth{grid-template-columns:minmax(0,1fr);gap:15px}
+ #love .birth-person{width:100%;padding:clamp(12px,3.5vw,17px)}
+ #love .love-date-parts{gap:clamp(5px,1.4vw,9px)}
+ #love .love-date-parts input,#love .love-date-parts select{font-size:16px;min-height:46px;padding:9px 5px}
+ #love .birth-person input[type="time"]{font-size:16px}
+}
+@media(max-width:375px){#love .love-date-parts{grid-template-columns:minmax(0,1.12fr) minmax(0,.95fr) minmax(0,.95fr);gap:5px}}
+</style></head><body><div class="shell"><header class="nav"><div class="logo">天机微可泄露 <span style="color:var(--red)">◌</span></div><span class="nav-mini">A LITTLE MYSTERY, A LOT OF ROOM TO BREATHE</span><span class="stamp">今日营业中</span></header>
 <section class="studio-intro" aria-label="天机书阁"><div class="studio-top"><div class="studio-kicker">TIANJI · A LITTLE SECRET</div><span class="studio-weather">一室纸墨，几分天机</span></div><div class="studio-heading"><span class="studio-sidenote">开卷<br>有疑</span><div><h1>天机<br><em>微可泄露</em></h1><p>一间藏在纸页里的小小书阁。<br>世事不必尽知，愿你来此，有所得，亦有所乐。</p></div></div><div class="desk-description">触碰桌上的物件，开启一处小天地。<span>也可以使用下方的文字导航。</span></div>
 
 <div class="secret-atlas" id="secretAtlas" aria-label="天机微可泄露：纸上六景">

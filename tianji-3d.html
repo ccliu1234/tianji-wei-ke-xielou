@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1d2c38"><title>天机小馆 · 3D 移步换景体验</title>
+<style>
+:root{color-scheme:dark;--paper:#ede3cc;--blue:#9cb7c5;--ink:#1d303b}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#172630;color:var(--paper);font-family:"Songti SC","Noto Serif SC","SimSun",serif}
+button,a{font:inherit}button{cursor:pointer}#world{position:fixed;inset:0;touch-action:none;user-select:none}
+#world canvas{display:block;width:100%;height:100%;touch-action:none}
+#grain{pointer-events:none;position:absolute;inset:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)' opacity='.5'/%3E%3C/svg%3E");mix-blend-mode:screen}
+#vignette{pointer-events:none;position:absolute;inset:0;background:radial-gradient(ellipse at 50% 51%,transparent 27%,rgba(8,18,24,.37) 100%)}
+#top{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:clamp(17px,3vw,31px);background:linear-gradient(#15252ed1,transparent);z-index:5}
+#brand{display:flex;flex-direction:column;gap:5px;text-decoration:none;color:var(--paper)}
+#brand b{font-weight:400;font-size:clamp(20px,2.3vw,29px);letter-spacing:.23em}
+#brand small{font-family:Georgia,serif;letter-spacing:.2em;font-size:9px;color:#b2b8b8}
+#top-actions{display:flex;gap:9px;align-items:center}
+.ui-btn{border:1px solid #cdd2ce78;background:#1e303e9e;color:#f1e8d8;padding:10px 15px;border-radius:2px;backdrop-filter:blur(9px);font-size:12px;letter-spacing:.06em}
+.ui-btn:hover,.ui-btn:focus-visible{background:#71899c85;outline:1px solid #c0d4dc}
+#status{position:absolute;top:105px;left:clamp(18px,3vw,34px);max-width:min(370px,70vw);z-index:3;transition:opacity .7s}
+#status small{font:italic 12px Georgia,serif;color:#b5c1c6;letter-spacing:.13em}
+#status h1{font-weight:400;letter-spacing:.2em;line-height:1.6;font-size:clamp(24px,3.4vw,43px);margin:13px 0}
+#status p{line-height:2.1;font-size:13px;color:#d1ceca}
+#door{position:absolute;inset:0;z-index:12;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px;background:radial-gradient(ellipse at 50% 55%,#223643b9,#0d1d28e9 74%);transition:opacity .85s,visibility .85s}
+#door.dismissed{opacity:0;visibility:hidden;pointer-events:none}
+#door .vertical{writing-mode:vertical-rl;border:1px solid #abada760;padding:28px 14px;letter-spacing:.45em;font-size:15px;line-height:2.3;color:#e9ddc7}
+#door h2{font-size:clamp(37px,6vw,70px);font-weight:400;letter-spacing:.2em;margin:27px 0 2px}
+#door p{font-size:13px;line-height:2.1;color:#c4ccc9}
+#enter{margin-top:25px;color:#f4ead5;background:#495c68bb;border:1px solid #dacbb280;min-width:156px;padding:15px 24px;letter-spacing:.2em}
+#enter:hover{background:#6c8090}
+#hud{position:absolute;bottom:clamp(19px,3.4vw,35px);left:50%;transform:translateX(-50%);width:min(790px,calc(100% - 28px));z-index:6;text-align:center}
+#scene-label{color:#e2ded2;font-size:12px;letter-spacing:.1em;margin:0 0 13px;text-shadow:0 2px 9px #10212b}
+#navigation{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:12px;background:#142630a6;border:1px solid #b8b4ab39;backdrop-filter:blur(9px)}
+.nav{border:1px solid #9aabb266;background:#34495685;color:#e7e2d5;padding:10px 13px;font-size:12px;white-space:nowrap;transition:background .15s}
+.nav:hover,.nav:focus-visible,.nav.active{background:#8c9d9d66;outline:none}
+#hotspots{position:absolute;inset:0;pointer-events:none;z-index:4}
+.spot{position:absolute;pointer-events:auto;transform:translate(-50%,-50%);border:1px solid #d9d2bd8c;border-radius:2px;padding:8px 11px;background:#152936cb;color:#f6e9d5;box-shadow:0 4px 20px #10202a61;white-space:nowrap;font-size:12px;letter-spacing:.07em;backdrop-filter:blur(5px);transition:opacity .2s,background .2s}
+.spot:before{content:'';position:absolute;bottom:100%;left:50%;height:15px;border-left:1px solid #d3cfba92}
+.spot:hover{background:#677f8c}
+#detail{position:absolute;right:clamp(18px,3vw,34px);top:50%;transform:translateY(-50%);width:min(315px,calc(100% - 40px));padding:27px 24px;background:#172935e8;backdrop-filter:blur(15px);border:1px solid #c7c7bc5b;z-index:8;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s}
+#detail.show{opacity:1;visibility:visible;pointer-events:auto}
+#detail .eyebrow{font:italic 12px Georgia,serif;color:#a9c5d1;letter-spacing:.16em}
+#detail h2{font-weight:400;font-size:27px;letter-spacing:.15em;margin:16px 0}
+#detail p{line-height:2.1;color:#cbd1d0;font-size:13px}
+#detail .actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+#detail .primary{background:#d1bd98;color:#213241;border:1px solid #d1bd98;padding:12px 17px;text-decoration:none;font-size:12px}
+#detail .secondary{background:transparent;color:#d4d5d0;border:1px solid #aab4b481;padding:12px 17px;font-size:12px}
+#loading{position:absolute;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:#152630;color:#e8ddc9;font-size:13px;letter-spacing:.16em}
+#loading.hidden{display:none}
+#error{max-width:400px;padding:20px;text-align:center;line-height:2}
+#hint{position:absolute;bottom:105px;left:0;right:0;text-align:center;z-index:3;color:#cad3d5;font:11px "PingFang SC",sans-serif;letter-spacing:.06em;text-shadow:0 2px 6px #162833;pointer-events:none}
+@media(max-width:640px){#top{padding:17px}#top-actions .ui-btn:first-child{display:none}#brand b{font-size:18px}#status{top:83px;max-width:190px}#status h1{font-size:22px;margin:7px 0}#status p{font-size:11px;line-height:1.7}#hint{bottom:150px;font-size:10px}#navigation{padding:9px;gap:6px}#hud{bottom:13px}#scene-label{font-size:11px;margin-bottom:9px}.nav{padding:9px;font-size:11px}#detail{width:calc(100% - 30px);right:15px;top:auto;bottom:122px;transform:none;padding:19px}#detail h2{font-size:23px;margin:10px 0}#detail p{font-size:12px;line-height:1.8}.spot{font-size:10px;padding:7px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
+</head><body>
+<div id="world"><div id="grain"></div><div id="vignette"></div></div>
+<div id="loading">正在点亮小馆里的灯……</div>
+<header id="top"><a id="brand" href="./index.html"><b>天机微可泄露</b><small>THE HOUSE OF HIDDEN THINGS · 3D EXPERIMENT</small></a><div id="top-actions"><button class="ui-btn" id="resetCamera">回到正厅</button><a class="ui-btn" href="./index.html">返回原版</a></div></header>
+<div id="status"><small>CHAPTER 01 · THE LITTLE PAVILION</small><h1>天机小馆</h1><p>夜深了，馆里的灯还亮着。<br>走近一件物品，听它讲一段故事。</p></div>
+<div id="hotspots"></div>
+<div id="detail"><span class="eyebrow" id="detailNo">ROOM 01 / 06</span><h2 id="detailName">命格人物志</h2><p id="detailDesc"></p><div class="actions"><a id="goRoom" class="primary" href="./index.html#birth">走近 · 开启此卷</a><button id="closeDetail" class="secondary">退回大厅</button></div></div>
+<div id="hint">拖动屏幕转动视角 · 点物件靠近 · 滚轮缩放</div>
+<div id="hud"><div id="scene-label">在馆内走走，看看哪件物品在等你</div><nav id="navigation" aria-label="馆内探索"></nav></div>
+<div id="door"><div class="vertical">此间有书，有签，有未尽之事。</div><h2>天机小馆</h2><p>世事未必有解，先进来坐坐。</p><button id="enter">推门入馆　↗</button></div>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
+const $=id=>document.getElementById(id), root=$('world');
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.7));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.48;
+root.prepend(renderer.domElement);
+const scene=new THREE.Scene();scene.background=new THREE.Color('#1e303b');scene.fog=new THREE.Fog('#1e303b',17,32);
+const camera=new THREE.PerspectiveCamera(51,1,.1,120);camera.position.set(0,2.9,14);
+const look=new THREE.Vector3(0,1.8,0),targetLook=look.clone(),camTo=new THREE.Vector3(0,2.35,8.6),mouse=new THREE.Vector2(),ray=new THREE.Raycaster();
+const wood=new THREE.MeshStandardMaterial({color:'#544639',roughness:.91}),woodLight=new THREE.MeshStandardMaterial({color:'#846c52',roughness:.84}),woodDark=new THREE.MeshStandardMaterial({color:'#372f2c',roughness:.91}),paper=new THREE.MeshStandardMaterial({color:'#ded4bc',roughness:1,side:THREE.DoubleSide}),paperBlue=new THREE.MeshStandardMaterial({color:'#667b8a',roughness:.95}),gold=new THREE.MeshStandardMaterial({color:'#b6a07a',metalness:.24,roughness:.55}),ink=new THREE.MeshStandardMaterial({color:'#263641',roughness:.9}),wall=new THREE.MeshStandardMaterial({color:'#b0ab99',roughness:1}),floorMat=new THREE.MeshStandardMaterial({color:'#746958',roughness:1}),red=new THREE.MeshStandardMaterial({color:'#9b5550',roughness:.9}),smokeMat=new THREE.MeshBasicMaterial({color:'#d7d1c8',transparent:true,opacity:.24,depthWrite:false});
+function box(w,h,d,mat,x,y,z,group=scene){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;group.add(m);return m}
+function cylinder(r,h,mat,x,y,z,group=scene){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,18),mat);m.position.set(x,y,z);m.castShadow=true;group.add(m);return m}
+function orb(r,mat,x,y,z,group=scene){const m=new THREE.Mesh(new THREE.SphereGeometry(r,24,16),mat);m.position.set(x,y,z);m.castShadow=true;group.add(m);return m}
+function plane(w,h,mat,x,y,z,rot=0,group=scene){let m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),mat);m.position.set(x,y,z);m.rotation.y=rot;group.add(m);return m}
+const floor=box(16,.28,16,floorMat,0,-.16,0);for(let i=-7;i<=7;i++)box(.014,.006,16,woodDark,i,.002,0);
+box(16,6,.3,wall,0,3,-7.3);box(.3,6,16,wall,-7.8,3,0);box(.3,6,16,wall,7.8,3,0);
+box(16,.25,16,woodDark,0,6,0);for(let i=-6;i<=6;i+=3)box(.18,.2,16,woodDark,i,5.84,0);
+box(16,.13,.2,woodDark,0,4.4,-7.06);for(let i=-7;i<=7;i+=2.3)box(.1,5,.12,woodLight,i,2.5,-7.05);
+for(let side of [-1,1]){const x=side*7.58;for(let z=-5.9;z<=5.9;z+=2.8)box(.15,5,.15,woodDark,x,2.4,z)}
+// Window and moon: a lit framed recess, grounded on back wall.
+box(5.4,3.1,.15,woodDark,2.6,3,-7.02);plane(4.9,2.7,new THREE.MeshBasicMaterial({color:'#415666'}),2.6,3,-6.93);
+orb(.55,new THREE.MeshBasicMaterial({color:'#e9dfbe'}),4.15,3.58,-6.84);for(let x of [1.35,2.65,3.95])box(.08,2.82,.14,woodLight,x,3,-6.84);box(5,.09,.14,woodLight,2.65,3,-6.84);
+// Shelf, books, ceramic jars.
+for(let y of [1.15,2.25,3.35,4.45])box(3.25,.16,1.0,wood,-5.5,y,-5.7);
+for(let x of [-7,-4])box(.15,4.2,1,woodDark,x,2.95,-5.7);
+for(let i=0;i<23;i++){let x=-6.9+(i%12)*.245, yy=i<12?2.37:3.48;box(.18,.5+((i*7)%4)*.1,.6,i%4===0?paperBlue:i%3===0?paper:woodLight,x,yy,-5.6)}
+for(let x of [-6.1,-5,-4.4])cylinder(.20,.3,paper,x,1.43,-5.7);
+// Desk center and legs.
+box(7.5,.34,2.7,woodLight,-.2,1.42,-1.7);
+for(let x of [-3.48,3.09])for(let z of [-2.7,-.7])box(.23,1.3,.27,woodDark,x,.73,z);
+box(7.25,.13,.11,gold,-.2,1.25,-.38);
+const keys=[{id:'birth',label:'命书',title:'命格人物志',desc:'轻翻命书，四柱渐次落纸。让生辰成为一段可以细读的故事。',pos:[-2.6,1.95,-1.75],view:[-3.0,2.72,2.5],look:[-2.6,1.72,-1.8]},
+{id:'yi',label:'铜钱',title:'问一卦',desc:'三枚铜钱轻轻相碰。连投六次，六爻自下而上显出轮廓。',pos:[-.65,1.63,-1.1],view:[-.5,3.0,2.8],look:[-.6,1.55,-1.6]},
+{id:'sign',label:'签筒',title:'求一签',desc:'柜台的签筒轻轻晃动。你可以抽出一张写着此刻心事的纸签。',pos:[1.8,1.9,-1.82],view:[2.4,2.7,2.5],look:[1.6,1.85,-1.82]},
+{id:'love',label:'红线匣',title:'月老牵线',desc:'打开红线匣，写下两个人的名字，看看两段人生在什么地方交会。',pos:[3,1.78,-2.18],view:[3.8,2.7,1.9],look:[2.9,1.82,-2.15]},
+{id:'incense',label:'香炉',title:'天机小庙',desc:'拈一炷香，轻轻点燃。窗边的烟缓缓升起，等一封写给心愿的回信。',pos:[4.7,2.34,-5.3],view:[4.6,2.95,-.6],look:[4.7,2.1,-5.3]},
+{id:'relax',label:'墨团',title:'放空一下',desc:'那团墨迹不知怎么活了过来。它不管吉凶，只会偶尔躲懒、撒娇。',pos:[-5.6,2.1,-5.05],view:[-4.0,3.0,-1.1],look:[-5.6,2.2,-5.3]}];
+const interactive=[];
+function groupFor(id){const g=new THREE.Group();g.userData.id=id;scene.add(g);interactive.push(g);return g}
+// Birth book on tabletop.
+{let g=groupFor('birth');box(1.6,.14,1.05,paperBlue,-2.6,1.69,-1.7,g);box(1.52,.09,1.0,paper,-2.6,1.79,-1.68,g);box(.11,.09,1.03,gold,-2.62,1.84,-1.68,g);for(let i=0;i<4;i++)box(.48,.012,.015,ink,-3.05,1.848,-1.95+i*.16,g)}
+// Coins laid on tabletop.
+{let g=groupFor('yi');for(let i=0;i<3;i++){const m=new THREE.Mesh(new THREE.TorusGeometry(.19,.065,10,25),gold);m.position.set(-.85+i*.28,1.68,-1.1+(i%2)*.28);m.rotation.x=-Math.PI/2;g.add(m)}}
+// Fortune sticks in ceramic vase.
+{let g=groupFor('sign');const cup=cylinder(.32,.55,paperBlue,1.75,1.93,-1.7,g);for(let i=0;i<11;i++)box(.045,.78,.047,i%3===0?gold:woodLight,1.48+(i%5)*.14,2.32+((i*7)%3)*.06,-1.9+Math.floor(i/5)*.16,g)}
+// Red thread box / spool.
+{let g=groupFor('love');box(1.17,.22,.88,woodDark,3.0,1.68,-2.0,g);box(.85,.04,.6,paper,3,1.81,-2,g);const thread=new THREE.Mesh(new THREE.TorusGeometry(.23,.037,10,48),red);thread.rotation.x=Math.PI/2;thread.position.set(3,1.87,-2);g.add(thread);orb(.08,red,3.5,1.85,-1.7,g)}
+// side cabinet for incense.
+box(2.1,.2,1.1,woodLight,4.7,1.78,-5.45);for(let x of [3.8,5.58])box(.18,1.7,.15,woodDark,x,.9,-5.45);
+{let g=groupFor('incense');cylinder(.48,.26,gold,4.7,2.0,-5.3,g);cylinder(.38,.09,woodDark,4.7,2.16,-5.3,g);for(let i=-1;i<=1;i++)box(.026,.58,.025,woodLight,4.7+i*.09,2.49,-5.28+i*.035,g)}
+// ink spirit atop shelf.
+{let g=groupFor('relax');orb(.33,ink,-5.6,4.87,-5.65,g);orb(.075,paper,-5.73,4.9,-5.36,g);orb(.075,paper,-5.48,4.9,-5.36,g);orb(.025,ink,-5.73,4.9,-5.29,g);orb(.025,ink,-5.48,4.9,-5.29,g)}
+// Furnish and lanterns.
+for(let x of [-3.8,3.8]){cylinder(.35,.12,woodDark,x,5.1,-4);orb(.24,new THREE.MeshStandardMaterial({color:'#f1d6a8',emissive:'#d9a96c',emissiveIntensity:.75}),x,4.9,-4)}
+scene.add(new THREE.AmbientLight('#dce8ee',.82));const moonLight=new THREE.DirectionalLight('#b1cfeb',2.4);moonLight.position.set(3,6,-2);moonLight.castShadow=true;moonLight.shadow.mapSize.set(1024,1024);scene.add(moonLight);const warm=new THREE.PointLight('#e7b783',37,14,2);warm.position.set(-3.5,4.7,-3);scene.add(warm);const warm2=new THREE.PointLight('#c4ac88',24,9,2);warm2.position.set(4,4,-4);scene.add(warm2);
+const floating=[];for(let i=0;i<28;i++){const m=orb(.014,new THREE.MeshBasicMaterial({color:i%3===0?'#eacba0':'#b0c1c3',transparent:true,opacity:.55}),-6+(i*13%120)/10,1+(i*17%40)/10,-5+(i*7%80)/10);floating.push(m)}
+let opened=false,selected=null,moving=false,yaw=0,pitch=0,pointerDown=null,dragDistance=0;
+const nav=$('navigation');keys.forEach((item,i)=>{const b=document.createElement('button');b.className='nav';b.textContent='0'+(i+1)+' '+item.label;b.addEventListener('click',()=>focusItem(item));nav.append(b)});
+const spots=keys.map(item=>{const b=document.createElement('button');b.className='spot';b.textContent=item.label+'　↗';b.addEventListener('click',()=>focusItem(item));$('hotspots').append(b);return {item,button:b}});
+function ease(t){return t*t*(3-2*t)}
+let motion=null;
+function animateTo(pos,to,duration=1350,done){motion={begin:performance.now(),duration,from:camera.position.clone(),target:new THREE.Vector3(...pos),fromLook:targetLook.clone(),toLook:new THREE.Vector3(...to),done};moving=true}
+function lobby(){selected=null;motion=null;moving=false;$('detail').classList.remove('show');nav.querySelectorAll('.nav').forEach(b=>b.classList.remove('active'));animateTo([0,2.85,8.2],[0,2.05,-1.7],1100);$('scene-label').textContent='在馆内走走，看看哪件物品在等你'}
+function focusItem(item){if(!opened){enter();setTimeout(()=>focusItem(item),1450);return}selected=item;animateTo(item.view,item.look,1250,()=>{showDetail(item)});$('detail').classList.remove('show');$('scene-label').textContent='正在走近 · '+item.title;nav.querySelectorAll('.nav').forEach((b,i)=>b.classList.toggle('active',keys[i]===item))}
+function showDetail(item){$('detailNo').textContent='THE LITTLE PAVILION · '+item.label;$('detailName').textContent=item.title;$('detailDesc').textContent=item.desc;$('goRoom').href='./index.html#'+item.id;$('detail').classList.add('show');$('scene-label').textContent='点击「开启此卷」进入原版功能 · 或返回正厅'}
+function enter(){if(opened)return;opened=true;$('door').classList.add('dismissed');animateTo([0,2.85,8.2],[0,2.05,-1.7],1750);$('scene-label').textContent='欢迎入馆 · 触摸物件，随镜头移动'}
+$('enter').addEventListener('click',enter);$('resetCamera').addEventListener('click',()=>{if(!opened)enter();else lobby()});$('closeDetail').addEventListener('click',lobby);
+function xy(e){const r=renderer.domElement.getBoundingClientRect();return new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1))}
+renderer.domElement.addEventListener('pointerdown',e=>{pointerDown={x:e.clientX,y:e.clientY,px:e.clientX,py:e.clientY};dragDistance=0;renderer.domElement.setPointerCapture(e.pointerId)});
+renderer.domElement.addEventListener('pointermove',e=>{if(!pointerDown||!opened||motion||selected)return;const dx=e.clientX-pointerDown.px,dy=e.clientY-pointerDown.py;dragDistance+=Math.abs(dx)+Math.abs(dy);pointerDown.px=e.clientX;pointerDown.py=e.clientY;yaw=Math.max(-.64,Math.min(.64,yaw-dx*.003));pitch=Math.max(-.16,Math.min(.23,pitch+dy*.002));targetLook.set(Math.sin(yaw)*4,2.1+pitch*3,-1.7)});
+renderer.domElement.addEventListener('pointerup',e=>{if(!pointerDown)return;const moved=dragDistance;pointerDown=null;if(moved>15||!opened||motion)return;mouse.copy(xy(e));ray.setFromCamera(mouse,camera);const hits=ray.intersectObjects(interactive,true);if(hits.length){let p=hits[0].object;while(p&&!p.userData.id)p=p.parent;const item=keys.find(x=>x.id===p?.userData.id);if(item)focusItem(item)}});
+renderer.domElement.addEventListener('wheel',e=>{if(!opened||motion||selected)return;e.preventDefault();camTo.z=Math.max(6.4,Math.min(11.5,camTo.z+Math.sign(e.deltaY)*.5));camera.position.z=camTo.z},{passive:false});
+let oldW=0,oldH=0;function resize(){const w=root.clientWidth,h=root.clientHeight;if(w===oldW&&h===oldH)return;oldW=w;oldH=h;camera.aspect=w/h;camera.fov=w<h?63:51;camera.updateProjectionMatrix();renderer.setSize(w,h)}
+const tmp=new THREE.Vector3();
+function tick(t){requestAnimationFrame(tick);resize();
+if(motion){const k=Math.min(1,(t-motion.begin)/motion.duration),v=ease(k);camera.position.lerpVectors(motion.from,motion.target,v);targetLook.lerpVectors(motion.fromLook,motion.toLook,v);if(k>=1){const done=motion.done;motion=null;moving=false;if(done)done();if(!selected)camTo.copy(camera.position)}}
+camera.lookAt(targetLook);
+floating.forEach((m,i)=>{m.position.y+=Math.sin(t*.00065+i)*.00035});
+for(const {item,button} of spots){tmp.set(...item.pos).project(camera);const visible=opened&&!selected&&!motion&&tmp.z>0&&tmp.z<1&&Math.abs(tmp.x)<.89&&Math.abs(tmp.y)<.8;button.style.opacity=visible?'1':'0';button.style.pointerEvents=visible?'auto':'none';button.style.left=((tmp.x+1)*50)+'%';button.style.top=((-tmp.y+1)*50)+'%'}
+renderer.render(scene,camera)}
+requestAnimationFrame(tick);$('loading').classList.add('hidden');
+</script>
+<script>
+window.addEventListener('error',e=>{const load=document.getElementById('loading');if(load&&!load.classList.contains('hidden'))load.innerHTML='<div id="error">3D 场景未能加载。可能是网络无法连接到 3D 引擎资源。<p><a style="color:#dce4ec" href="./index.html">返回原版天机书阁</a></p></div>'});
+</script>
+</body></html>
